@@ -14,8 +14,8 @@
 class UF {
    
     
-    private $siglaUf;
-    private $nomeEstado;
+    public $siglaUf;
+    public $nomeEstado;
     
     
     function __construct($siglaUf, $nomeEstado) {

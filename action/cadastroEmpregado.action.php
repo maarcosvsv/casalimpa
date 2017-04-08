@@ -7,10 +7,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-	    $login = $_POST['login'];
+      
+//PAREI AQUI!
+	$login = $_POST['login'];
         $senha = $_POST['senha'];
         $email = $_POST['email'];
+        $docIdentificacao = $_POST['docIdentificacao'];
       
         $usuario = new Usuario($login, $senha, $email, null, '1', null);
         $empregado = new Empregado(null, null, null, null, $usuario, null);
