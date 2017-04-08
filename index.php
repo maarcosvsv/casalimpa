@@ -11,7 +11,7 @@ and open the template in the editor.
     </head>
     <body>
         <?php
-       echo 'Projeto de pi';
+       echo 'Projeto de pi DANIEL TESTE NETBEANS';
         ?>
     </body>
 </html>
