@@ -8,8 +8,7 @@
  * and open the template in the editor.
  */
 
-      
-	$login = $_POST['login'];
+	    $login = $_POST['login'];
         $senha = $_POST['senha'];
         $email = $_POST['email'];
       

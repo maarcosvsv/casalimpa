@@ -2,6 +2,7 @@
     require_once '../entity/Empregado.class.php';
     require_once '../entity/Usuario.class.php';
     require_once '../connectionFactory/connectionFactory.php';
+    
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
