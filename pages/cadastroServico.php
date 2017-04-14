@@ -1,15 +1,6 @@
 <html>
 <head>
-<!-- DEVE SER SEGUIDO ESTA ORDEM ABAIXO! -->
-<!-- irei conferir esta area-->
-   <script language="JavaScript" type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script> 
- <script language="JavaScript" type="text/javascript" src="../resources/js/jquery.js"></script>
-   <script language="JavaScript" type="text/javascript" src="../resources/js/script.js"></script>
- <script language="JavaScript" type='text/javascript' src='../ajax/cep.ajax.js'></script>
- 
- 
-<link rel="stylesheet" type="text/css" href="../resources/css/estilo.css">
-
+    
 <meta charset="utf-8">
 
 </head>
@@ -18,7 +9,7 @@
 
 <div id="#">
 <p> Cadastro de Serviços:</P>
-<form action="../action/cadastroEmpregado.action.php" method="POST"><!--Ainda falta alterar esta area -->
+<form action="../action/cadastroServico.action.php" method="POST">
 	<p>Tipos de Serviços</p>
 		<select id="nome" name="nome">
 			<option value="baba">Babá</option>
