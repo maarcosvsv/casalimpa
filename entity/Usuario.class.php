@@ -21,9 +21,10 @@ class Usuario {
     public $situacao;
     public $complementoEndereco;
     public $logradouro;
+    public $docIdentificacao;
     public $fotoPerfil;
    
-    function __construct($idUsuario, $login, $senha, $email, $expiracao, $situacao, $complementoEndereco, $logradouro, $fotoPerfil) {
+    function __construct($idUsuario, $login, $senha, $email, $expiracao, $situacao, $complementoEndereco, $logradouro, $fotoPerfil,$docIdentificacao) {
         $this->idUsuario = $idUsuario;
         $this->login = $login;
         $this->senha = $senha;
@@ -33,6 +34,8 @@ class Usuario {
         $this->complementoEndereco = $complementoEndereco;
         $this->logradouro = $logradouro;
         $this->fotoPerfil = $fotoPerfil;
+        $this->docIdentificacao = $docIdentificacao;
+        
     }
 
     function getIdUsuario() {
@@ -108,6 +111,15 @@ class Usuario {
     function setFotoPerfil($fotoPerfil) {
         $this->fotoPerfil = $fotoPerfil;
     }
+
+    function getDocIdentificacao() {
+        return $this->docIdentificacao;
+    }
+
+    function setDocIdentificacao($docIdentificacao) {
+        $this->docIdentificacao = $docIdentificacao;
+    }
+
 
 
 

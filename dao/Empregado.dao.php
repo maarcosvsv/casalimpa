@@ -21,24 +21,31 @@ class EmpregadoDAO {
          $connection = $connectionFactory->getConnection();
          
          $usuario = $empregado->getUsuario();
- 
-         $sqlInsertUsuario = "INSERT INTO usuario(login,senha,email, idsituacao) "
-                 . "values ('".$usuario->getLogin()."','".$usuario->getSenha()."',"
-                 . "'".$usuario->getEmail()."',".$usuario->getSituacao().") ";
-           
-         mysql_query($sqlInsertUsuario, $connection); 
          
+         
+         $sqlInsertUsuario = "INSERT INTO usuario(login,senha,email, idsituacao, expiracao, cpf_cnpj, complemento, tb_logradouro_PK_logradouro) "
+                 . "values ('".$usuario->getLogin()."','".$usuario->getSenha()."',"
+                 . "'".$usuario->getEmail()."',".$usuario->getSituacao().","
+                 . "'".$usuario->getExpiracao()."','".$usuario->getDocIdentificacao()."','".$usuario->getComplementoEndereco()."',".$usuario->getLogradouro()->getIdLogradouro().")";
+           
+      echo $sqlInsertUsuario;
+         
+         mysql_query($sqlInsertUsuario, $connection); 
+               
+      
          $idUsuario = mysql_insert_id();
-         ECHO $idUsuario;
-         echo mysql_errno($connection) . ": " . mysql_error($connection) . "\n";
-        /*  
+
+         
+     
+        
            $sqlInsertEmpregado = "INSERT INTO profissional(nome,telefone, id_usuario) "
                  . "values ('".$empregado->getNome()."','".$empregado->getTelefone()."',"
                  . "'".$idUsuario."') ";
            
          
         mysql_query($sqlInsertEmpregado, $connection); 
-          */ 
+              echo mysql_errno($connection) . ": " . mysql_error($connection) . "\n";
+      
         mysql_close($connection); 
          
 

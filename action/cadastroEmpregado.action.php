@@ -27,7 +27,7 @@
         
         $logradouro = new Logradouro($idLogradouro, null, null, null);
               
-        $usuario = new Usuario(null, $login, $senha, $email, $dataExpiracao, 1, $complementoEndereco, $logradouro, null);
+        $usuario = new Usuario(null, $login, $senha, $email, $dataExpiracao, 1, $complementoEndereco, $logradouro, null, $docIdentificacao);
         $empregado = new Empregado(null, $usuario, $nome, $telefoneCompleto, null, null);
         
         $empregadoDAO = new EmpregadoDAO();
