@@ -28,20 +28,20 @@ class EmpregadoDAO {
                  . "'".$usuario->getEmail()."',".$usuario->getSituacao().","
                  . "'".$usuario->getExpiracao()."','".$usuario->getDocIdentificacao()."','".$usuario->getComplementoEndereco()."',".$usuario->getLogradouro()->getIdLogradouro().")";
            
-      echo $sqlInsertUsuario;
+
          
          mysql_query($sqlInsertUsuario, $connection); 
                
       
          $idUsuario = mysql_insert_id();
-
+echo mysql_errno($connection) . ": " . mysql_error($connection) . "\n";
          
      
         
            $sqlInsertEmpregado = "INSERT INTO profissional(nome,telefone, id_usuario) "
                  . "values ('".$empregado->getNome()."','".$empregado->getTelefone()."',"
                  . "'".$idUsuario."') ";
-           
+           echo'$sqlInsertEmpregado';
          
         mysql_query($sqlInsertEmpregado, $connection); 
               echo mysql_errno($connection) . ": " . mysql_error($connection) . "\n";

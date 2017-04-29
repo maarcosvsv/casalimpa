@@ -12,9 +12,9 @@
  * @author Marcos Vasconcelos
  */
 class connectionFactory {
-    var $host = "localhost"; 
+    var $host = "localhost:3307"; 
     var $user = "root";
-    var $senha = "root"; 
+    var $senha = "23051989"; 
     var $db = "casalimpa"; 
 
     function getConnection(){
