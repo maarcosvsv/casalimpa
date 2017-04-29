@@ -13,22 +13,53 @@
  */
 class Usuario {
     
+    public $idUsuario;
     public $login;
     public $senha;
     public $email;
     public $expiracao;
     public $situacao;
+    public $complementoEndereco;
+    public $logradouro;
     public $fotoPerfil;
    
-    function __construct($login, $senha, $email, $expiracao, $situacao, $fotoPerfil) {
+    function __construct($idUsuario, $login, $senha, $email, $expiracao, $situacao, $complementoEndereco, $logradouro, $fotoPerfil) {
+        $this->idUsuario = $idUsuario;
         $this->login = $login;
         $this->senha = $senha;
         $this->email = $email;
         $this->expiracao = $expiracao;
         $this->situacao = $situacao;
+        $this->complementoEndereco = $complementoEndereco;
+        $this->logradouro = $logradouro;
         $this->fotoPerfil = $fotoPerfil;
     }
-    
+
+    function getIdUsuario() {
+        return $this->idUsuario;
+    }
+
+    function getComplementoEndereco() {
+        return $this->complementoEndereco;
+    }
+
+    function getLogradouro() {
+        return $this->logradouro;
+    }
+
+    function setIdUsuario($idUsuario) {
+        $this->idUsuario = $idUsuario;
+    }
+
+    function setComplementoEndereco($complementoEndereco) {
+        $this->complementoEndereco = $complementoEndereco;
+    }
+
+    function setLogradouro($logradouro) {
+        $this->logradouro = $logradouro;
+    }
+
+        
     
     function getLogin() {
         return $this->login;

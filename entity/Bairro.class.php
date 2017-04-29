@@ -16,6 +16,7 @@ class Bairro {
     public $nomeBairro;
     public $cidade;
     
+    //baisrasksadosda
     function __construct($idBairro, $nomeBairro, $cidade) {
         $this->idBairro = $idBairro;
         $this->nomeBairro = $nomeBairro;

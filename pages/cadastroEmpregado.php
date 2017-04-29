@@ -35,26 +35,27 @@
 	<input type="text" id="email" name="email" onblur="validacaoEmail(f1.email)" placeholder="E-mail"/><br/>
 	<input type="text" id="login" name="login" placeholder="Nome de usuario"/><br/>
 	<input type="password" id="senha" name="senha" placeholder="Senha"/><br/>
-	<input type="text" id="docIdentificacao" onkeyup="somenteNumeros(this)" name="cpf" maxlength="14" placeholder="CPF/CNPJ"/><br/>
+	<input type="text" id="docIdentificacao" onkeyup="somenteNumeros(this)" name="docIdentificacao" maxlength="14" placeholder="CPF/CNPJ"/><br/>
 	<p>Telefone:</p>
-	<input type="text" id="#" onkeyup="somenteNumeros(this);" maxlength="2" placeholder="DDD" />
-	<input type="text" id="#" onkeyup="somenteNumeros(this);"  maxlength="9" placeholder="Telefone"  /><br />
+	<input type="text" id="dddTelefone" name="dddTelefone" onkeyup="somenteNumeros(this);" maxlength="2" placeholder="DDD" />
+	<input type="text" id="telefone"  name="telefone"onkeyup="somenteNumeros(this);"  maxlength="9" placeholder="Telefone"  /><br />
 	<p>data de nascimento:</p>
-	<input type="txt" id="#" name="nasc_dia" onkeyup="somenteNumeros(this)" placeholder="Dia" maxlength="2"/>
-		<select id="#" name="nasc_mes">
-			<option value="janeiro">Janeiro</option>
-			<option value="fevereiro">Fevereiro</option>
-			<option value="marco">Março</option>
-			<option value="maior">Maio</option>
-			<option value="junho">Junho</option>
-			<option value="julho">Julho</option>
-			<option value="agosto">Agosto</option>
-			<option value="setembro">Setembro</option>
-			<option value="outubro">Outubro</option>
-			<option value="novenbro">Novenbro</option>
-			<option value="dezembro">Dezembro</option>
+	<input type="txt" id="nasc_dia" name="nasc_dia" onkeyup="somenteNumeros(this)" placeholder="Dia" maxlength="2"/>
+		<select id="nasc_mes" name="nasc_mes">
+			<option value="01">Janeiro</option>
+			<option value="02">Fevereiro</option>
+			<option value="03">Março</option>
+                        <option value="04">Abril</option>
+			<option value="05">Maio</option>
+			<option value="06">Junho</option>
+			<option value="07">Julho</option>
+			<option value="08">Agosto</option>
+			<option value="09">Setembro</option>
+			<option value="10">Outubro</option>
+			<option value="11">Novembro</option>
+			<option value="12">Dezembro</option>
 		</select>
-	<input type="txt" id="#" name="nasc_ano" onkeyup="somenteNumeros(this)" placeholder="ano" maxlength="4"/><br/><br />
+	<input type="txt" id="nasc_ano" name="nasc_ano" onkeyup="somenteNumeros(this)" placeholder="ano" maxlength="4"/><br/><br />
 	
 	<p>Endereço:<p/>
 	<input type="text" id="cep" name="cep" onkeypress="return MM_formtCep(event,this,'#####-###');" maxlength="9" placeholder="CEP"/><br/>
@@ -63,7 +64,7 @@
 	<input type="text" id="bairro" name="bairro" placeholder="Bairro"/><br/>
         <input type="text" id="uf" name="UF" placeholder="Estado"/><br/>
         <input type="text" id="complemento" name="complemento" placeholder="Complemento"/><br/>
-	 <input disabled="true" style="display:none;" type="text" id="idLogradouro" name="idLogradouro" />
+	 <input style="display:none;" type="text" id="idLogradouro" name="idLogradouro" />
 	
 
 	<input type="submit" class="" value="enviar"/>

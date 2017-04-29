@@ -14,24 +14,31 @@
  */
 class Empregado {
     
+    public $idProfissional;
     public $usuario;
     public $nome;
     public $telefone;
     public $registro_salarial;
     public $area_atuacao;
-    public $endereco;
    
-    
-    function __construct($nome, $telefone, $registro_salarial, $area_atuacao, $usuario, $endereco) {
+    function __construct($idProfissional, $usuario, $nome, $telefone, $registro_salarial, $area_atuacao) {
+        $this->idProfissional = $idProfissional;
+        $this->usuario = $usuario;
         $this->nome = $nome;
         $this->telefone = $telefone;
         $this->registro_salarial = $registro_salarial;
         $this->area_atuacao = $area_atuacao;
-        $this->endereco = $endereco;
-        $this->usuario = $usuario;
-        
     }
-    
+
+    function getIdProfissional() {
+        return $this->idProfissional;
+    }
+
+    function setIdProfissional($idProfissional) {
+        $this->idProfissional = $idProfissional;
+    }
+
+        
     function getUsuario() {
         return $this->usuario;
     }
@@ -52,9 +59,7 @@ class Empregado {
         return $this->area_atuacao;
     }
 
-    function getEndereco() {
-        return $this->endereco;
-    }
+
 
     function setUsuario($usuario) {
         $this->usuario = $usuario;
@@ -76,9 +81,7 @@ class Empregado {
         $this->area_atuacao = $area_atuacao;
     }
 
-    function setEndereco($endereco) {
-        $this->endereco = $endereco;
-    }
+  
 
 
     

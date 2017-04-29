@@ -24,10 +24,21 @@ class EmpregadoDAO {
  
          $sqlInsertUsuario = "INSERT INTO usuario(login,senha,email, idsituacao) "
                  . "values ('".$usuario->getLogin()."','".$usuario->getSenha()."',"
-                 . "'".$usuario->getEmail()."','".$usuario->getSituacao()."') ";
+                 . "'".$usuario->getEmail()."',".$usuario->getSituacao().") ";
            
-        mysql_query($sqlInsertUsuario, $connection); 
+         mysql_query($sqlInsertUsuario, $connection); 
+         
+         $idUsuario = mysql_insert_id();
+         ECHO $idUsuario;
+         echo mysql_errno($connection) . ": " . mysql_error($connection) . "\n";
+        /*  
+           $sqlInsertEmpregado = "INSERT INTO profissional(nome,telefone, id_usuario) "
+                 . "values ('".$empregado->getNome()."','".$empregado->getTelefone()."',"
+                 . "'".$idUsuario."') ";
            
+         
+        mysql_query($sqlInsertEmpregado, $connection); 
+          */ 
         mysql_close($connection); 
          
 
