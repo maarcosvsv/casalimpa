@@ -19,15 +19,16 @@ class ServicoDAO {
          $connectionFactory = new connectionFactory();
          $connection = $connectionFactory->getConnection();
          
-         $sqlInsertServico = "INSERT INTO categoria_servico(null,nome,descricao,dificuldade_servico"
-                 . "values ('".$servico->getcod_categoria_servico()."','".$servico->getnome()."','".$servico->getdescricao()."','".$servico->getdificuldadeservico()."')";
-     
+         $sqlInsertServico = "INSERT INTO categoria_servico(nome,descricao,nivel_dificuldade)"
+                 . "values ('".$servico->getnome()."',"
+                         . "'".$servico->getdescricao()."',"
+                         . "'".$servico->getdificuldadeservico()."')";
 
+         mysql_query($sqlInsertServico, $connection);
+
+         echo mysql_errno($connection) . ": " . mysql_error($connection) . "\n";
          
-         mysql_query($sqlInsertServico, $connection); 
-               
-      
-         $cod_categoria_servico = mysql_insert_id();
-echo mysql_errno($connection) . ": " . mysql_error($connection) . "\n";
+          
+
 }
 }
