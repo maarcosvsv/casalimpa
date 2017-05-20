@@ -22,6 +22,8 @@
         $nasc_ano = $_POST['nasc_ano'];
         $idLogradouro = $_POST['idLogradouro'];
         $complementoEndereco = $_POST['complemento'];
+        $tipoUsuario = $_POST['tipoUsuario'];
+  
         $dataExpiracao = date('Y-m-d', strtotime("+90 days"));  
         $telefoneCompleto = $ddd.$telefone;
         
@@ -30,12 +32,49 @@
         $usuario = new Usuario(null, $login, $senha, $email, $dataExpiracao, 1, $complementoEndereco, $logradouro, null, $docIdentificacao);
         $empregado = new Empregado(null, $usuario, $nome, $telefoneCompleto, null, null);
         
+        if($tipoUsuario == "EMPREGADO"){
         $empregadoDAO = new EmpregadoDAO();
-        $empregadoDAO->incluirEmpregado($empregado);
+        $error = $empregadoDAO->incluirEmpregado($empregado);
+        }else{
+            
+            
+        }
         
+       
         
-        
+         include '../resources/layoutPadrao.php';
+        ?>
+
+<div id="form" style="height: 500px !important">
+	<div id="form1">
+<p>Cadastro.</p>
+<?php
+ if($error == true){
+        ?>
+         <p>  Prezado <?php echo $_POST['nome']; ?>, seu cadastro foi realizado com sucesso, para continuar faça login no sistema e atualize seus dados.</p>
+              <br><br><br>
+              <form  action="/casaLimpa">
+    <input type="submit"  value="Voltar para página principal."/>
+</form>
+     
+            <?php
+        }else{
+             ?>
+      <p>Prezado <?php echo $_POST['nome']; ?>, ocorreu um erro ao salvar sua solicitação, por favor tente novamente.</p>
+        <br><br><br>
+      <input type="submit"  onClick="history.go(-1)" value="Voltar para página anterior."/>
+          <?php
+            }
+               ?>
+    
+      
 	
+	</div>
+
+
+</div>
+</body>
+</html>
         
         
         

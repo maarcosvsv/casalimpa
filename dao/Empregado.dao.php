@@ -22,32 +22,47 @@ class EmpregadoDAO {
          
          $usuario = $empregado->getUsuario();
          
+       
          
          $sqlInsertUsuario = "INSERT INTO usuario(login,senha,email, idsituacao, expiracao, cpf_cnpj, complemento, tb_logradouro_PK_logradouro) "
                  . "values ('".$usuario->getLogin()."','".$usuario->getSenha()."',"
                  . "'".$usuario->getEmail()."',".$usuario->getSituacao().","
                  . "'".$usuario->getExpiracao()."','".$usuario->getDocIdentificacao()."','".$usuario->getComplementoEndereco()."',".$usuario->getLogradouro()->getIdLogradouro().")";
            
-
          
+           $idLogradouro = $usuario->getLogradouro()->getIdLogradouro();
+         
+         if($idLogradouro == NULL || $idLogradouro == ""){
+                  $sqlInsertUsuario = "INSERT INTO usuario(login,senha,email, idsituacao, expiracao, cpf_cnpj, complemento) "
+                 . "values ('".$usuario->getLogin()."','".$usuario->getSenha()."',"
+                 . "'".$usuario->getEmail()."',".$usuario->getSituacao().","
+                 . "'".$usuario->getExpiracao()."','".$usuario->getDocIdentificacao()."','".$usuario->getComplementoEndereco()."')";
+           
+         }
+
          mysql_query($sqlInsertUsuario, $connection); 
                
-      
+      echo mysql_errno($connection) . ": " . mysql_error($connection) . "\n";
          $idUsuario = mysql_insert_id();
-echo mysql_errno($connection) . ": " . mysql_error($connection) . "\n";
+       
+         $errorUsuario = mysql_errno($connection);
          
-     
-        
            $sqlInsertEmpregado = "INSERT INTO profissional(nome,telefone, id_usuario) "
                  . "values ('".$empregado->getNome()."','".$empregado->getTelefone()."',"
-                 . "'".$idUsuario."') ";
-           echo'$sqlInsertEmpregado';
-         
+                 . "".$idUsuario.") ";
+           
         mysql_query($sqlInsertEmpregado, $connection); 
-              echo mysql_errno($connection) . ": " . mysql_error($connection) . "\n";
-      
-        mysql_close($connection); 
+         echo mysql_errno($connection) . ": " . mysql_error($connection) . "\n";
          
+        
+        $errorProfissional = mysql_errno($connection);
+        mysql_close($connection);
+
+        if($errorProfissional == "0" && $errorUsuario == "0"){
+            return true;
+        }else{
+            return false;
+        }
 
 }
 }

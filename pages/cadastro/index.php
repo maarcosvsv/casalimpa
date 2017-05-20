@@ -1,4 +1,9 @@
-
+<?php
+session_start(); 
+	if(isset($_SESSION["usuario"])){
+		header('Location: /casaLimpa/pages/dashboard.php');
+	}
+        ?>
 <html>
 <head>
 <!-- DEVE SER SEGUIDO ESTA ORDEM ABAIXO! -->
@@ -74,7 +79,7 @@
 <div id="form">
 	<div id="form1">
 <p> Cadastro:</P>
-<form action="../action/cadastroEmpregado.action.php" method="POST">
+<form action="../../action/cadastroUsuario.action.php" method="POST">
 	<input type="text" id="nome" name="nome" placeholder="Nome completo"/><br/>
 	<input type="text" id="email" name="email" onblur="validacaoEmail(f1.email)" placeholder="E-mail"/><br/>
 	<input type="text" id="login" name="login" placeholder="Nome de usuario"/><br/>
@@ -110,6 +115,9 @@
         <input type="text" id="complemento" name="complemento" placeholder="Complemento"/><br/>
 	 <input style="display:none;" type="text" id="idLogradouro" name="idLogradouro" />
 	
+
+  <input type="radio" name="tipoUsuario" value="EMPREGADO"> Prestador de serviços domésticos<br>
+  <input type="radio" name="tipoUsuario" value="EMPREGADOR"> Procurando serviços domésticos<br>
 
 	<input type="submit" class="" value="enviar"/>
 	
