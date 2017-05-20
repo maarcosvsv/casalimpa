@@ -12,7 +12,7 @@ html>
     <meta name="author" content="">	
 
 	<meta charset="utf-8">
-        <title>Categoria de serviços</title>
+        <title>Categoria de serviços - Casa Limpa</title>
 	<!-- Bootstrap Core CSS -->
     <link href="../../resources/css/bootstrap.min.css" rel="stylesheet">
 

@@ -101,7 +101,7 @@
 		</select>
 	<input type="txt" id="nasc_ano" name="nasc_ano" onkeyup="somenteNumeros(this)" placeholder="ano" maxlength="4"/><br/><br />
 	
-	<p>Endereço:<p/>
+	<p>Endereço:</p>
 	<input type="text" id="cep" name="cep" onkeypress="return MM_formtCep(event,this,'#####-###');" maxlength="9" placeholder="CEP"/><br/>
 	<input type="text" id="logradouro" name="logradouro" placeholder="Logradouro"/><br/>
 	<input type="text" id="cidade" name="cidade" placeholder="Cidade"/><br/>
