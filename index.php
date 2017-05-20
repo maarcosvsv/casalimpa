@@ -1,3 +1,13 @@
+<?php
+	session_start(); 
+	if(isset($_SESSION["usuario"])){
+		header('Location: /casaLimpa/pages/dashboard.php');
+	}
+
+	
+	?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,7 +26,12 @@
 
     <!-- Custom CSS -->
     <link href="resources/css/landing-page.css" rel="stylesheet">
+     
+    <!-- jQuery -->
+    <script src="resources/js/jquery.js"></script>
 
+    <!-- Bootstrap Core JavaScript -->
+    <script src="resources/js/bootstrap.min.js"></script>
     <!-- Custom Fonts -->
     <link href="resources/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
@@ -43,8 +58,8 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand topnav" href="#">imagem logo</a>
-            </div>
+                <a class="navbar-brand topnav" href="/casaLimpa"><img src="/casaLimpa/resources/img/logoVert.png" width="100px" height="30px" /></a>
+             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
@@ -58,7 +73,7 @@
                         <a href="pages/cadastro">Cadastre-se</a>
                     </li>
                     <li>
-                        <a href="#contact">Contato</a>
+                        <a href="pages/login.php">Login</a>
                     </li>
                 </ul>
             </div>
@@ -207,22 +222,22 @@
                 <div class="col-lg-12">
                     <ul class="list-inline">
                         <li>
-                            <a href="#">Home</a>
+                            <a href="#">Início</a>
                         </li>
                         <li class="footer-menu-divider">&sdot;</li>
                         <li>
-                            <a href="#about">About</a>
+                            <a href="#about">Sobre</a>
                         </li>
                         <li class="footer-menu-divider">&sdot;</li>
                         <li>
-                            <a href="#services">Services</a>
+                            <a href="#services">Como Funciona</a>
                         </li>
                         <li class="footer-menu-divider">&sdot;</li>
                         <li>
-                            <a href="#contact">Contact</a>
+                            <a href="#contact">Login</a>
                         </li>
                     </ul>
-                    <p class="copyright text-muted small">Copyright &copy; Your Company 2014. All Rights Reserved</p>
+                    <p class="copyright text-muted small">Copyright &copy; CasaLimpa Empreendimentos LTDA 2017. Todos os direitos reservados.</p>
                 </div>
             </div>
         </div>
