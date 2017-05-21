@@ -1,5 +1,8 @@
 <?php
-session_start();
+if(!isset($_SESSION)) 
+    { 
+        session_start(); 
+    } 
        
 ?>
 
@@ -54,7 +57,7 @@ session_start();
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                      <li>
-                        <a href="../../#about">Meus Serviços</a>
+                         <a href="/casaLimpa/pages/listaServicos.php">Meus Serviços</a>
                     </li>
                      <li>
                         <a href="../../#about">Contratar Serviço</a>
