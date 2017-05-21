@@ -34,9 +34,10 @@ include '../resources/layoutInterno.php';
                         <div class="container">
                             
                             <center>
-                            <button style="float: left;" type="submit" class="btn btn-default" aria-label="Left Align">
+                                <a href="vincularServicoUsuario.php"
+                            <button style="float: left;" type="button"  class="btn btn-default" aria-label="Left Align">
   <i class="fa fa-plus-square fa-fw"></i>Adicionar novo serviço
-</button>
+                                    </button></a>
                                 </center>
                             <table class="table table-inverse">
      <thead>
@@ -53,7 +54,7 @@ include '../resources/layoutInterno.php';
       <tbody>
         <?php
 	foreach ($servicos as $servico){
-            echo "<th>".$servico['descricao']."</th>";
+            echo " <tr><th>".$servico['nomeServico']."</th>";
             echo "<th>".$servico['prazoServico']."</th>";
             echo "<th>".$servico['precoServico']."</th>";
             echo "<th>".$servico['nome']."</th>";
@@ -65,7 +66,7 @@ include '../resources/layoutInterno.php';
   <i class="fa fa-sign-in fa-fw"></i>
 </button><button type="submit" class="btn btn-default" aria-label="Left Align">
   <i class="fa fa-sign-in fa-fw"></i>
-</button></th>';
+</button></th>  </tr>';
         
         }
 
