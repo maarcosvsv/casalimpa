@@ -9,7 +9,8 @@ require_once 'Endereco.dao.php';
  */
 
 $cep = $_POST['cep'];
- 
+
+
 $enderecoDAO = new EnderecoDAO(); 
 
 $logradouro = $enderecoDAO->getEnderecoCompletoPorCep($cep);

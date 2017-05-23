@@ -1,6 +1,7 @@
 $(document).ready( function() {
    /* Executa a requisição quando o campo CEP perder o foco */
    $('#cep').blur(function(){
+   
            /* Configura a requisição AJAX */
             $('#logradouro').val('');
             $('#bairro').val('');
@@ -10,7 +11,7 @@ $(document).ready( function() {
             var $cepFmt = $cep.replace("-", "");
                         
            $.ajax({
-               url : '../ajax/cep.request.php', /* URL que será chamada */ 
+               url : '/casaLimpa/ajax/cep.request.php', /* URL que será chamada */ 
                 type : 'POST', /* Tipo da requisição */ 
                 data: 'cep=' + $cepFmt, /* dado que será enviado via POST */
                 dataType: 'json', /* Tipo de transmissão */
