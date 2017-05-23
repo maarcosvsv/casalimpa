@@ -25,7 +25,13 @@ class connectionFactory {
             print "<b>".mysql_error()."</b>";
             die();
        } else {
+           # Aqui está o segredo
+        mysql_query("SET NAMES 'utf8'", $connection);
+        mysql_query("SET character_set_connection=utf8",$connection);
+        mysql_query("SET character_set_client=utf8",$connection);
+        mysql_query("SET character_set_results=utf8",$connection);
            mysql_select_db($this->db, $connection) or print(mysql_error()); 
+           
            return $connection;
        }
     }
