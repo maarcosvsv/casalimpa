@@ -78,17 +78,18 @@ session_start();
     </nav>
 <div id="form">
 	<div id="form1">
-<p> Cadastro:</P>
+<p> Faça seu cadastro</p> <br>        
+<p> Dados:</P>
 <form action="../../action/cadastroUsuario.action.php" method="POST">
 	<input type="text" id="nome" name="nome" placeholder="Nome completo"/><br/>
 	<input type="text" id="email" name="email" onblur="validacaoEmail(f1.email)" placeholder="E-mail"/><br/>
 	<input type="text" id="login" name="login" placeholder="Nome de usuario"/><br/>
 	<input type="password" id="senha" name="senha" placeholder="Senha"/><br/>
-	<input type="text" id="docIdentificacao" onkeyup="somenteNumeros(this)" name="docIdentificacao" maxlength="14" placeholder="CPF/CNPJ"/><br/>
+	<input type="text" id="docIdentificacao" onkeyup="somenteNumeros(this)" name="docIdentificacao" maxlength="14" placeholder="CPF/CNPJ"/><br><br>
 	<p>Telefone:</p>
 	<input type="text" id="dddTelefone" name="dddTelefone" onkeyup="somenteNumeros(this);" maxlength="2" placeholder="DDD" />
-	<input type="text" id="telefone"  name="telefone"onkeyup="somenteNumeros(this);"  maxlength="9" placeholder="Telefone"  /><br />
-	<p>data de nascimento:</p>
+	<input type="text" id="telefone"  name="telefone"onkeyup="somenteNumeros(this);"  maxlength="9" placeholder="Telefone"  /><br><br>
+	<p>Data de nascimento:</p>
 	<input type="txt" id="nasc_dia" name="nasc_dia" onkeyup="somenteNumeros(this)" placeholder="Dia" maxlength="2"/>
 		<select id="nasc_mes" name="nasc_mes">
 			<option value="01">Janeiro</option>
@@ -104,7 +105,7 @@ session_start();
 			<option value="11">Novembro</option>
 			<option value="12">Dezembro</option>
 		</select>
-	<input type="txt" id="nasc_ano" name="nasc_ano" onkeyup="somenteNumeros(this)" placeholder="ano" maxlength="4"/><br/><br />
+	<input type="txt" id="nasc_ano" name="nasc_ano" onkeyup="somenteNumeros(this)" placeholder="ano" maxlength="4"/><br><br>
 	
 	<p>Endereço:</p>
 	<input type="text" id="cep" name="cep" onkeypress="return MM_formtCep(event,this,'#####-###');" maxlength="9" placeholder="CEP"/><br/>
@@ -115,10 +116,17 @@ session_start();
         <input type="text" id="complemento" name="complemento" placeholder="Complemento"/><br/>
 	 <input style="display:none;" type="text" id="idLogradouro" name="idLogradouro" />
 	
-
-  <input type="radio" name="tipoUsuario" value="EMPREGADO"> Prestador de serviços domésticos<br>
-  <input type="radio" name="tipoUsuario" value="EMPREGADOR"> Procurando serviços domésticos<br>
-
+        <div class="row">
+            <div class="radios">
+                <input type="radio" id="radio1" name="tipoUsuario" value="EMPREGADO">
+                <label for="radio1"> Prestador de serviços domésticos</label><br>
+            </div>
+            <div class="radios">
+                <input type="radio" id="radio2" name="tipoUsuario" value="EMPREGADOR">
+                <label for="radio2"> Procurando serviços domésticos </label><br>
+            </div> 
+         </div>
+         
 	<input type="submit" class="" value="enviar"/>
 	
 	</form>
