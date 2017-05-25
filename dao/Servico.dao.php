@@ -35,7 +35,7 @@ class ServicoDAO {
   function getServicoPorUsuario($idUsuario) {
          $connectionFactory = new connectionFactory();
          $connection = $connectionFactory->getConnection();
-        $sqlServico= "select serv.cod_servico as codigoServico, serv.prazo as prazoServico, serv.preco_sugerido as precoServico, catServ.nome as nomeServico, p.nome, p.registro_salarial
+        $sqlServico= "select serv.cod_servico as codigoServico, serv.prazo as prazoServico, serv.preco_sugerido as precoServico, catServ.nome as nomeServico, p.nome, p.registro_salarial, serv.imagem_principal imagemPrincipal
              from servico serv, profissional p, categoria_servico catServ where catServ.cod_categoria_servico = serv.categoria_servico_cod_categoria_servico
  and p.id_profissional = serv.id_profissional
  and p.id_usuario = ".$idUsuario."  

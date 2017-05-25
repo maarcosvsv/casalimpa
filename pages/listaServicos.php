@@ -59,7 +59,7 @@ include '../resources/layoutInterno.php';
             echo "<th>".$servico['precoServico']."</th>";
             echo "<th>".$servico['nome']."</th>";
             echo "<th>".$servico['registro_salarial']."</th>";
-           
+           echo '<th><img src="data:image/jpeg;base64,' .  base64_encode($servico['imagemPrincipal']). '" /></th>';
                echo '<th><button type="submit" class="btn btn-default" aria-label="Left Align">
   <i class="fa fa-sign-in fa-fw"></i>
 </button><button type="submit" class="btn btn-default" aria-label="Left Align">
