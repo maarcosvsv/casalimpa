@@ -12,7 +12,7 @@ include '../resources/layoutInterno.php';
 <div id="form" style="height: 500px !important">
 	<div id="form1">
 <br>
-<h4>Dados Cadastrais</h4>
+<h3>Meu Perfil</h3>
 <hr>
 <?php
 
@@ -25,19 +25,19 @@ echo"<br>";
 echo"<br>";
 echo"<br>";
 
-echo"<h5>Nome</h5>";
+echo"<h5>Nome: </h5>";
 echo '';//pegar nome do banco
 echo"<br>";
-echo"<h5>CPF/CNPJ</h5>";
+echo"<h5>CPF/CNPJ: </h5>";
 echo '';//pegar cpf/cnpj do banco
 echo"<br>";
-echo"<h5>Email</h5>";
+echo"<h5>Email: </h5>";
 echo '';//pegar email do banco
 echo"<br>";
-echo"<h5>Login</h5>";
+echo"<h5>Login: </h5>";
 echo '';//pegar login do banco
 echo"<br>";
-echo"<h5>Endereço</h5>";
+echo"<h5>Endereço: </h5>";
 echo '';//pegar endereço do banco
 echo"<br>";
 ?>

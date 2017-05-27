@@ -69,7 +69,7 @@ if(!isset($_SESSION))
                         <a href="../../#services">Avaliações</a>
                     </li>
                     <li>
-                        <a href="/casaLimpa/pages/cadastro">Meu perfil</a>
+                        <a href="/CasaLimpa/pages/meuPerfil.php">Meu perfil</a>
                     </li>
                     <li>
                         <?php
