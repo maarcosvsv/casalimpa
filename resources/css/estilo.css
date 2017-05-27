@@ -1,6 +1,7 @@
 body {
   /*background-color: #bccfe0;*/
   box-sizing: border-box;
+  overflow-x: hidden;  
 }
 
 input, select {
@@ -68,7 +69,30 @@ p {
 #form1 {
   margin-top: 50px;
   margin-left: 50px;
-  
 }
 
+#form1 p {
+    font-size: 1.3em;
+}
 
+#form1 p {
+    margin-top: 15px;
+}
+
+#form1 p:first-child {
+     font-size: 1.8em;    
+}
+
+#form1 [type="radio"] {
+    width: 18px;
+    height: initial;
+    margin-top: 8px;
+}
+
+#nasc_mes {
+    padding: 12px;
+}
+
+.radios {
+    margin: 10px auto 10px 20px;    
+}
