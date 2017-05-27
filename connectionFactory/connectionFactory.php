@@ -12,7 +12,7 @@
  * @author Marcos Vasconcelos
  */
 class connectionFactory {
-    var $host = "localhost:3306"; 
+    var $host = "localhost:3307"; //Porta :3307 - Noteb Daniel - Demais portar :3306
     var $user = "root";
     var $senha = "root"; 
     var $db = "casalimpa"; 
