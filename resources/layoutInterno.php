@@ -18,10 +18,18 @@ if(!isset($_SESSION))
         <title>CasaLimpa</title>
 	<!-- Bootstrap Core CSS -->
     <link href="/casaLimpa/resources/css/bootstrap.min.css" rel="stylesheet">
+    	
+        <!-- Jquery link -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+       <script type="text/javascript" src="/casaLimpa/resources/js/visualizar.js"></script>>
+    <!--    <link href="/casaLimpa/resources/js/jquery.js">
+    <link href="/casaLimpa/resources/js/bootstrap.js">-->
 
     <!-- Custom CSS -->
     <link href="/casaLimpa/resources/ss/landing-page.css" rel="stylesheet">
-     <link href="/casaLimpa/resources/css/estilo_listaserv.css" rel="stylesheet">
+    <link href="/casaLimpa/resources/css/estilo_listaserv.css" rel="stylesheet">
+    <link rel="javascript" type="text/javascript" href="/casaLimpa/resources/js/visualizar.js">
     
     <!-- Custom Fonts -->
     <link href="/casaLimpa/resources/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">

@@ -58,19 +58,18 @@ include '../resources/layoutInterno.php';
             echo "<th>".$servico['nome']."</th>";
             echo "<th>".$servico['registro_salarial']."</th>";
            echo '<th><img src="data:image/jpeg;base64,' .  base64_encode($servico['imagemPrincipal']). '" /></th>';
-               echo '<th><button type="submit" onclick="location.href=\'../action/visualizar.php\';" class="btn btn-default" aria-label="Left Align">
-  <i class="fa fa-sign-in fa-fw"></i>
+               echo '<th><button type="submit" class="btn btn-default" aria-label="Left Align">
+  <i class="glyphicon glyphicon-eye-open"></i>
 </button><button type="submit" class="btn btn-default" aria-label="Left Align">
-  <i class="fa fa-sign-in fa-fw"></i>
+  <i class="glyphicon glyphicon-remove"></i>
 </button><button type="submit" class="btn btn-default" aria-label="Left Align">
   <i class="fa fa-sign-in fa-fw"></i>
 </button></th>  </tr>';
         
-        }
-        
+        }        
    ?>   
- 
-    </tbody>
+           
+    </tbody>    
   </table>
 </div>
                       
@@ -83,8 +82,22 @@ include '../resources/layoutInterno.php';
 
         <div class="container view">
             <div class="row">
-                <div class="col-md-12">
-                    
+                <div class="col-md-12 ">
+                    <?php
+                    require_once '../connectionFactory/connectionFactory.php';
+
+                        $connectionFactory = new connectionFactory();
+                        $connection = $connectionFactory->getConnection();
+
+                        mysql_select_db("casalimpa");
+
+                        $query = "SELECT nome, descricao FROM categoria_servico";
+                        $result = mysql_query($query, $connection);
+
+                        $row = mysql_fetch_array($result);
+                        echo $row[0]." - ";
+                        echo $row[1];
+                    ?>
                 </div>
             </div>
         </div>
