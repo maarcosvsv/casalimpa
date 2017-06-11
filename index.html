@@ -9,6 +9,11 @@
     <meta name="description" content="">
     <meta name="author" content="">
 <script language="JavaScript" type="text/javascript" src="../../resources/js/script.js"></script>
+<!--  adicionar o jquery-->
+<script language="JavaScript" type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+ <!-- Datepicker -->
+ <link href="resources/css/bootstrap-datepicker.css" rel="stylesheet">
+
     <title>Casa Limpa</title>
 
     <!-- Bootstrap Core CSS -->
@@ -74,13 +79,14 @@
 
             <div class="row">
                 <div class="col-lg-12">
+                    <div class="col-sm-offset-4 col-sm-4">
                     <div class="intro-message">
                         <h1>Casa Limpa</h1>
                         
                         <h3>Encontre um empregado carinhoso</h3>
                         <form action="#" method="POST">
-                            <input type="text" />
-                            <input type="text" placeholder="calendario datepicker" />
+                            <input type="text" >
+                            <input type="text" id="calendario" class="form-control">
                             <input type="submit" value="Buscar">
                         </form>
                         <hr class="intro-divider">
@@ -96,6 +102,7 @@
                                 <a href="#" class="btn btn-default btn-lg"><i class="fa fa-linkedin fa-fw"></i> <span class="network-name">Linkedin</span></a>
                             </li>
                         </ul> -->
+                        </div>
                     </div>
                 </div>
             </div>
@@ -219,12 +226,20 @@
     </footer>
 
     <!-- jQuery -->
-    <script src="resources/js/jquery.js"></script>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!--datepicker -->
+    <script src="resources/js/bootstrap-datepicker.js"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="resources/js/bootstrap.min.js"></script>
 
-
+<script>
+      $(document).ready(function () {
+        $('#calendario').datepicker({
+            format: "dd/mm/yyyy",
+            language: "pt-BR"
+        });
+      });
+    </script>
 </body>
 
 </html>
