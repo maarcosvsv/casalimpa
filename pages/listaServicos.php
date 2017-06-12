@@ -51,6 +51,7 @@ include '../resources/layoutInterno.php';
     </thead>
       <tbody>
         <?php
+        
 	foreach ($servicos as $servico){
             echo " <tr><th>".$servico['nomeServico']."</th>";
             echo "<th>".$servico['prazoServico']."</th>";
@@ -58,16 +59,16 @@ include '../resources/layoutInterno.php';
             echo "<th>".$servico['nome']."</th>";
             echo "<th>".$servico['registro_salarial']."</th>";
            echo '<th><img src="data:image/jpeg;base64,' .  base64_encode($servico['imagemPrincipal']). '" /></th>';
-               echo '<th><button type="submit" class="btn btn-default" aria-label="Left Align">
+               echo '<th><button type="submit" name="'.$servico['codigoServico'].'" class="btn btn-default" aria-label="Left Align">
   <i class="glyphicon glyphicon-eye-open"></i>
-</button><button type="submit" class="btn btn-default" aria-label="Left Align">
+</button><button type="submit" name="'.$servico['codigoServico'].'" onClick="identifica(this);" class="btn btn-default" aria-label="Left Align">
   <i class="glyphicon glyphicon-remove"></i>
-</button><button type="submit" class="btn btn-default" aria-label="Left Align">
+</button><button type="submit" name="'.$servico['codigoServico'].'" onClick="identifica(this);" class="btn btn-default" aria-label="Left Align">
   <i class="fa fa-sign-in fa-fw"></i>
-</button></th>  </tr>';
+</button></th>  </tr>';      
+        }                
         
-        }        
-   ?>   
+        ?>   
            
     </tbody>    
   </table>
@@ -83,21 +84,8 @@ include '../resources/layoutInterno.php';
         <div class="container view">
             <div class="row">
                 <div class="col-md-12 ">
-                    <?php
-                    require_once '../connectionFactory/connectionFactory.php';
-
-                        $connectionFactory = new connectionFactory();
-                        $connection = $connectionFactory->getConnection();
-
-                        mysql_select_db("casalimpa");
-
-                        $query = "SELECT nome, descricao FROM categoria_servico";
-                        $result = mysql_query($query, $connection);
-
-                        $row = mysql_fetch_array($result);
-                        echo $row[0]." - ";
-                        echo $row[1];
-                    ?>
+                    
+                                                          
                 </div>
             </div>
         </div>
@@ -107,6 +95,8 @@ include '../resources/layoutInterno.php';
 
    
         </div></div>
+
+<script src="..\resources\js\visualizar.js"></script>
 
 </body>
 
