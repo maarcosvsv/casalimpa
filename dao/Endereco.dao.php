@@ -49,5 +49,57 @@ class EnderecoDAO {
 
         return $logradouro;
     }
+    function getCidades() {
+        $connectionFactory = new connectionFactory();
+        $connection = $connectionFactory->getConnection();
+        
+        mysql_query('SET CHARACTER SET utf8', $connection);
+        
+        $sqlGetEndereco = "select cidade.* from  tb_cidade cidade" ;
+
+        $result = mysql_query($sqlGetEndereco, $connection);
+        
+        $contador = 0;
+        $listaCidade[] = null;
+       
+        while ($row = mysql_fetch_assoc($result)) {
+          $cidade = new Cidade(null, $row["PK_Cidade"], $row["Nome_Cidade"]);
+           $listaCidade[$contador] = $cidade;
+            $contador++;
+         }
+            
+      
+
+        mysql_close($connection);
+
+        return $listaCidade;
+    }
+    
+     function getBairrosPorCidade($idCidade) {
+        $connectionFactory = new connectionFactory();
+        $connection = $connectionFactory->getConnection();
+        
+        mysql_query('SET CHARACTER SET utf8', $connection);
+        
+        $sqlGetEndereco = "select bairro.* from  tb_bairro bairro where TB_Cidade_PK_Cidade = ".$idCidade."" ;
+
+        $result = mysql_query($sqlGetEndereco, $connection);
+        
+        $contador = 0;
+        $listaBairros[] = null;
+        
+                   
+         while ($row = mysql_fetch_assoc($result)) {
+            $bairro = new Bairro($row["PK_Bairro"], $row["Nome_Bairro"], null);
+             $listaBairros[$contador] = $bairro;
+            $contador++;
+         }
+         
+      
+
+        mysql_close($connection);
+
+        return $listaBairros;
+    }
 
 }

@@ -14,6 +14,11 @@ if(!isset($_SESSION))
     <meta name="description" content="">
     <meta name="author" content="">	
 
+      <script language="JavaScript" type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script> 
+ 	<script language="JavaScript" type="text/javascript" src="../resources/js/jquery.js"></script>
+   <script language="JavaScript" type="text/javascript" src="../resources/js/script.js"></script>
+ 	<script language="JavaScript" type='text/javascript' src='../ajax/cep.ajax.js'></script>
+ 
 	<meta charset="utf-8">
         <title>CasaLimpa</title>
 	<!-- Bootstrap Core CSS -->
@@ -22,6 +27,21 @@ if(!isset($_SESSION))
     <!-- Custom CSS -->
     <link href="/casaLimpa/resources/ss/landing-page.css" rel="stylesheet">
 
+    
+    
+    <!-- MetisMenu CSS -->
+    <link href="/casaLimpa/resources/css/vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="/casaLimpa/resources/css/dist/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Morris Charts CSS -->
+    <link href="/casaLimpa/resources/css/vendor/morrisjs/morris.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="/casaLimpa/resources/css/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    
+    
     <!-- Custom Fonts -->
     <link href="/casaLimpa/resources/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
@@ -60,13 +80,13 @@ if(!isset($_SESSION))
                          <a href="/casaLimpa/pages/listaServicos.php">Meus Serviços</a>
                     </li>
                      <li>
-                        <a href="../../#about">Contratar Serviço</a>
+                        <a href="/casaLimpa/pages/buscarServicos.php">Contratar Serviço</a>
                     </li>
                     <li>
-                        <a href="../../#about">Serviços Prestados</a>
+                        <a href="/casaLimpa/pages/servicosPrestados.php">Serviços Prestados</a>
                     </li>
                     <li>
-                        <a href="../../#services">Avaliações</a>
+                       <a href="/casaLimpa/pages/avaliacoes.php">Avaliações</a>
                     </li>
                     <li>
                         <a href="/CasaLimpa/pages/meuPerfil.php">Meu perfil</a>

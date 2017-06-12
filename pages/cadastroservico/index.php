@@ -1,4 +1,4 @@
-html>
+<html>
 <head>
 <!-- DEVE SER SEGUIDO ESTA ORDEM ABAIXO! -->
    <script language="JavaScript" type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script> 
@@ -74,6 +74,7 @@ html>
 	<div id="form1">
 <p> Cadastro de Serviços:</P>
 <form action="../../action/cadastroServico.action.php" method="POST">
+    
 	<p>Tipos de Serviços</p>
 		<select id="nome" name="nome">
 			<option value="Babá">Babá</option>

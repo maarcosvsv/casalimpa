@@ -12,8 +12,14 @@ include '../resources/layoutInterno.php';
 <div id="form" style="height: 500px !important">
 	<div id="form1">
 <br>
-<h3>Meu Perfil</h3>
+<h3>Meu Perfil - Informações globais</h3>
 <hr>
+<ul class="nav nav-tabs">
+  <li class="active"><a href="#">Perfil principal</a></li>
+  <li><a href="meuPerfil_prestador.php">Prestador de Serviços</a></li>
+  <li><a href="meuPerfil_cliente.php">Cliente</a></li>
+ 
+</ul>
 <?php
 
 echo'<img src="../resources/img/logoVert.png" alt="Meu Perfil" title="Meu Perfil"  width="70" height="100"vspace="5px" hspace="5px" border="5px" align="left"/>';
