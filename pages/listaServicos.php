@@ -59,17 +59,17 @@ include '../resources/layoutInterno.php';
             echo "<th>".$servico['nome']."</th>";
             echo "<th>".$servico['registro_salarial']."</th>";
            echo '<th><img src="data:image/jpeg;base64,' .  base64_encode($servico['imagemPrincipal']). '" /></th>';
-               echo '<th><button type="submit" name="'.$servico['codigoServico'].'" class="btn btn-default" aria-label="Left Align">
+               echo '<th><button type="submit" id="'.$servico['codigoServico'].'" class="btn btn-default" aria-label="Left Align">
   <i class="glyphicon glyphicon-eye-open"></i>
-</button><button type="submit" name="'.$servico['codigoServico'].'" onClick="identifica(this);" class="btn btn-default" aria-label="Left Align">
+</button><a href="listaServicos.php?id='.$servico["codigoServico"].'"><button type="submit" id="'.$servico['codigoServico'].'" onClick="identifica(this);" class="btn btn-default" aria-label="Left Align">
   <i class="glyphicon glyphicon-remove"></i>
-</button><button type="submit" name="'.$servico['codigoServico'].'" onClick="identifica(this);" class="btn btn-default" aria-label="Left Align">
+</button></a><button type="submit" id="'.$servico['codigoServico'].'" onClick="identifica(this);" class="btn btn-default" aria-label="Left Align">
   <i class="fa fa-sign-in fa-fw"></i>
 </button></th>  </tr>';      
-        }                
+        }                                
         
-        ?>   
-           
+        ?>            
+          
     </tbody>    
   </table>
 </div>
@@ -84,7 +84,8 @@ include '../resources/layoutInterno.php';
         <div class="container view">
             <div class="row">
                 <div class="col-md-12 ">
-                    
+                
+                    <?php include_once '../action/del_row.php'; ?> 
                                                           
                 </div>
             </div>
