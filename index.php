@@ -85,9 +85,9 @@
                         
                         <h3>Encontre um empregado carinhoso</h3>
                         <form action="#" method="GET">
-                            <input type="text" class="form-control" placeholder="Serviço ">
-                            <input type="text" id="calendario" class="form-control" placeholder="Data do serviço">
-                            <input type="submit" value="Buscar" >
+                            <input type="text" class="" placeholder="Serviço ">
+                            <input type="text" id="calendario" class="" placeholder="Data do serviço">
+                            <input type="submit" class="" value="Buscar" >
                         </form>
                         <hr class="intro-divider">
                         

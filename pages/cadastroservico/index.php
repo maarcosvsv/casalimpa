@@ -1,4 +1,4 @@
-html>
+<html>
 <head>
 <!-- DEVE SER SEGUIDO ESTA ORDEM ABAIXO! -->
    <script language="JavaScript" type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script> 
@@ -15,6 +15,7 @@ html>
         <title>Categoria de serviços - Casa Limpa</title>
 	<!-- Bootstrap Core CSS -->
     <link href="../../resources/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../resources/css/estilo.css" rel="stylesheet">
 
     <!-- Custom CSS -->
     <link href="../../resources/css/landing-page.css" rel="stylesheet">
@@ -87,11 +88,11 @@ html>
                         <option value="Arrumador(a)">Arrumador(a)</option> <!--Pessoal que apenas organiza guarda roupas armarios bibliotecas -->
 		</select>
 	
-	<p>Descrição do Serviço<p/>
+	<p>Descrição do Serviço</p>
 	
         <input type="text" id="descricao" name="descricao" placeholder="Descrição do Serviço"/><br/>
         
-        <p>Nivel de Dificuldade<p/>
+        <p>Nivel de Dificuldade</p>
         <select id="dificuldade_servico" name="dificuldade_servico">
 			<option value="0"> 0 - Entre: X hrs a X hrs</option>
 			<option value="1"> 1 - Entre: X hrs a X hrs</option>
@@ -100,8 +101,8 @@ html>
 			<option value="4"> 4 - Entre: X hrs a X hrs</option>
 			<option value="5"> 5 - Entre: X hrs a X hrs</option>
 		</select>
-        <br>
-        <br>
+        <br />
+        <br />
 
 	<input type="submit" class="" value="enviar"/>
 	
@@ -111,5 +112,35 @@ html>
 
 
 </div>
+ 
+ 
+
+    <!-- Footer
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul class="list-inline">
+                        <li>
+                            <a href="#">Inicio</a>
+                        </li>
+                        <li class="footer-menu-divider">&sdot;</li>
+                        <li>
+                            <a href="#about">Sobre</a>
+                        </li>
+                        <li class="footer-menu-divider">&sdot;</li>
+                        <li>
+                            <a href="#services">Como funciona</a>
+                        </li>
+                        <li class="footer-menu-divider">&sdot;</li>
+                        <li>
+                            <a href="#contact">Contato</a>
+                        </li>
+                    </ul>
+                    <p class="copyright text-muted small">Copyright &copy; Your Company 2014. All Rights Reserved</p>
+                </div>
+            </div>
+        </div>
+    </footer>  -->
 </body>
 </html>
