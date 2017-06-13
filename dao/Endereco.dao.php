@@ -18,29 +18,32 @@ require_once '../connectionFactory/connectionFactory.php';
  */
 class EnderecoDAO {
 
-    function getEnderecoCompletoPorCep($cep) {
-        
+     function getEnderecoCompletoPorCep($cep) {
         $connectionFactory = new connectionFactory();
         $connection = $connectionFactory->getConnection();
-
+        
+        mysql_query('SET CHARACTER SET utf8', $connection);
+        
         $sqlGetEnddereco = "select log.*, bairro.*, cidade.*, uf.* from tb_logradouro log, tb_bairro bairro, tb_cidade cidade, tb_uf uf
         where log.TB_Bairro_PK_Bairro = bairro.PK_Bairro
         and bairro.TB_Cidade_PK_Cidade = cidade.PK_Cidade
         and cidade.TB_UF_Sigla_UF = uf.Sigla_UF
-        and log.CEP_Logradouro = '" . $cep . "'";
+        and log.CEP_Logradouro = '" . $cep . "'" ;
 
         $result = mysql_query($sqlGetEnddereco, $connection);
+        
+        $row = mysql_fetch_assoc($result);
+      
+        if ($row != null && sizeof($row) > 0) {
 
-        if (mysqli_num_rows($result) > 0) {
-
-            while ($row = mysqli_fetch_assoc($result)) {
+            
                 $uf = new UF($row["Sigla_UF"], $row["Nome_Estado"]);
                 $cidade = new Cidade($uf, $row["PK_Cidade"], $row["Nome_Cidade"]);
                 $bairro = new Bairro($row["PK_Bairro"], $row["Nome_Bairro"], $cidade);
-                $logradouro = new Logradouro($row["PK_Logradouro"], $row["Nome_Logradouro"], $row["CEP_Logradouro"], $bairro);
+                $logradouro = new Logradouro($row["PK_Logradouro"], $row["Nome_logradouro"], $row["CEP_Logradouro"], $bairro);
                 
                 
-            }
+            
         } else {
             $logradouro = null;
         }
@@ -49,6 +52,40 @@ class EnderecoDAO {
 
         return $logradouro;
     }
+    function getEnderecoCompletoPorID($id) {
+        
+        $connectionFactory = new connectionFactory();
+        $connection = $connectionFactory->getConnection();
+
+        $sqlGetEnddereco = "select log.*, bairro.*, cidade.*, uf.* from tb_logradouro log, tb_bairro bairro, tb_cidade cidade, tb_uf uf
+        where log.TB_Bairro_PK_Bairro = bairro.PK_Bairro
+        and bairro.TB_Cidade_PK_Cidade = cidade.PK_Cidade
+        and cidade.TB_UF_Sigla_UF = uf.Sigla_UF
+        and log.PK_Logradouro = " . $id;
+
+        $result = mysql_query($sqlGetEnddereco, $connection);
+        
+        $row = mysql_fetch_assoc($result);
+      
+        if ($row != null && sizeof($row) > 0) {
+
+            
+                $uf = new UF($row["Sigla_UF"], $row["Nome_Estado"]);
+                $cidade = new Cidade($uf, $row["PK_Cidade"], $row["Nome_Cidade"]);
+                $bairro = new Bairro($row["PK_Bairro"], $row["Nome_Bairro"], $cidade);
+                $logradouro = new Logradouro($row["PK_Logradouro"], $row["Nome_logradouro"], $row["CEP_Logradouro"], $bairro);
+                
+                
+            
+        } else {
+            $logradouro = null;
+        }
+
+        mysql_close($connection);
+
+        return $logradouro;
+    }
+    
     function getCidades() {
         $connectionFactory = new connectionFactory();
         $connection = $connectionFactory->getConnection();

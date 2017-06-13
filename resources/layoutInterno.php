@@ -23,10 +23,17 @@ if(!isset($_SESSION))
         <title>CasaLimpa</title>
 	<!-- Bootstrap Core CSS -->
     <link href="/casaLimpa/resources/css/bootstrap.min.css" rel="stylesheet">
+    	
+        
+</head>
+     
+    <!--    <link href="/casaLimpa/resources/js/jquery.js">
+    <link href="/casaLimpa/resources/js/bootstrap.js">-->
 
     <!-- Custom CSS -->
     <link href="/casaLimpa/resources/ss/landing-page.css" rel="stylesheet">
-
+    <link href="/casaLimpa/resources/css/estilo_listaserv.css" rel="stylesheet">
+    
     
     
     <!-- MetisMenu CSS -->

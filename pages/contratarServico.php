@@ -45,7 +45,7 @@ $servico = $servicoDAO->getServicoPorCodigo($codServico);
          echo '<td width="10%"><img height="100" width="100" src="data:image/jpeg;base64,' .  base64_encode($servico['imagemPrincipal']). '" /></td>';
            
         }else{
-             echo '<td><img height="100" width="100" src="/casaLimpa/resources/img/interno/nophoto.png" /></td>';
+             echo '<td width="10%"><img height="100" width="100" src="/casaLimpa/resources/img/interno/nophoto.png" /></td>';
         
            
         }

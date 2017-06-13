@@ -20,6 +20,7 @@
         $nasc_dia = $_POST['nasc_dia'];
         $nasc_mes = $_POST['nasc_mes'];
         $nasc_ano = $_POST['nasc_ano'];
+        $dataNascimento = $nasc_ano."-".$nasc_mes."-".$nasc_dia;
         $idLogradouro = $_POST['idLogradouro'];
         $complementoEndereco = $_POST['complemento'];
         $tipoUsuario = $_POST['tipoUsuario'];
@@ -35,9 +36,9 @@
         if($tipoUsuario == "EMPREGADO"){
         $empregadoDAO = new EmpregadoDAO();
         $error = $empregadoDAO->incluirEmpregado($empregado);
-        }else{
-            
-            
+        }else if($tipoUsuario == "EMPREGADO"){
+            $empregadoDAO = new EmpregadoDAO();
+          $error = $empregadoDAO->incluirEmpregador($usuario, $nome, $telefoneCompleto, $dataNascimento);
         }
         
        

@@ -20,7 +20,7 @@ session_start();
                     <div class="intro-message">
                         <h1>Casa Limpa</h1>
                         
-                        <h3>Encontre um empregado carinhoso</h3>
+                        <h3>Contrate um Profissional</h3>
                         <hr class="intro-divider">
  <?php
                         if(!empty($_GET['login'])) {

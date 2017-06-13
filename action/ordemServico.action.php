@@ -8,10 +8,11 @@ if(!isset($_SESSION))
   
  $usuario = $_SESSION['usuario'];
  $idUsuario = $usuario->getIdUsuario();
- 
-        $operacao = $_GET['op'];
-        $idOs = $_GET['idOs'];
+  $operacao = $_GET['op'];
+        $idOs = $_GET['idOs']; 
+        
 if($operacao == 'confirmarInscricaoOS'){
+    
        $servicoDAO = new ServicoDAO();
        
       $resultado = $servicoDAO->confirmarRealizacaoServico($idOs) ;  
@@ -22,6 +23,7 @@ if($operacao == 'confirmarInscricaoOS'){
 }
 
 if($operacao == 'confirmarRealizacaoAntecipada'){
+   
        $servicoDAO = new ServicoDAO();
        
       $resultado = $servicoDAO->confirmarRealizacaoServico($idOs) ;  
@@ -32,6 +34,7 @@ if($operacao == 'confirmarRealizacaoAntecipada'){
 }
 
 if($operacao == 'recusarServico'){
+     
        $servicoDAO = new ServicoDAO();
        
       $resultado = $servicoDAO->recusarServico($idOs) ;  
@@ -41,6 +44,34 @@ if($operacao == 'recusarServico'){
 
 }
 
+if($operacao == 'avaliacaoCliente'){
+     
+        $idOs = $_POST['idOs'];
+       $mediaSatisfatoria = $_POST['mediaSatisfatoria'];
+       $consideracoes = $_POST['consideracoes'];
+       $servicoDAO = new ServicoDAO();
+       
+       $resultado = $servicoDAO->avaliarCliente($idOs, $mediaSatisfatoria, $consideracoes) ;  
+     
+       header("Location: /casaLimpa/pages/visualizarOrdemServico.php?os=".$idOs);
+       
+
+}
+
+if($operacao == 'avaliacaoProfissional'){
+     
+       $idOs = $_POST['idOs'];
+       $mediaSatisfatoria = $_POST['mediaSatisfatoria'];
+       $consideracoes = $_POST['consideracoes'];
+       $avaliacao = $_POST['avaliacao'];
+       $servicoDAO = new ServicoDAO();
+       
+       $resultado = $servicoDAO->avaliarProfissional($idOs, $mediaSatisfatoria, $consideracoes, $avaliacao) ;  
+     
+       header("Location: /casaLimpa/pages/visualizarOrdemServico.php?os=".$idOs);
+       
+
+}
 
     
       

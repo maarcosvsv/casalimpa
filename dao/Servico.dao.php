@@ -62,7 +62,82 @@ class ServicoDAO {
         mysql_query($sqlInsertServico, $connection);
         echo mysql_errno($connection) . ": " . mysql_error($connection) . "\n";
     }
+ function avaliarCliente($idOS, $mediaSatisfatoria, $consideracoes) {
+        $servicoDAO = new ServicoDAO();
+        $servicos = $servicoDAO->getOrdemServicoPorCodigo($idOS);
+        
+         $connectionFactory = new connectionFactory();
+        $connection = $connectionFactory->getConnection();
+        foreach ($servicos as $servico){
+       
+        if(intval($servico['id_situacao_os'])  == 3){
+           $sqlInsertServico = "update ordem_servico set id_situacao_os = 5 where id_os = " . $idOS;  
+        }else{
+           $sqlInsertServico = "update ordem_servico set id_situacao_os = 8 where id_os = " . $idOS;
+        }
+        
+     
+        mysql_query($sqlInsertServico, $connection);
 
+        $sqlInsertAvaliacao = "insert into qualificacao_cliente (media_satisfatoria, consideracoes, cliente_usuario_cod_usuario,ordem_servico_numero_os) "
+                . "values ('".$mediaSatisfatoria."','".$consideracoes."',".$servico['id_cliente'].",".$servico['numero_os'].")";
+         mysql_query($sqlInsertAvaliacao, $connection);
+           }
+        echo mysql_errno($connection) . ": " . mysql_error($connection) . "\n";
+    }
+    
+    function avaliarProfissional($idOS, $mediaSatisfatoria, $consideracoes, $avaliacao) {
+        
+        $servicoDAO = new ServicoDAO();
+        $servicos = $servicoDAO->getOrdemServicoPorCodigo($idOS);
+        
+         $connectionFactory = new connectionFactory();
+        $connection = $connectionFactory->getConnection();
+        foreach ($servicos as $servico){
+       
+        if(intval($servico['id_situacao_os'])  == 3){
+           $sqlInsertServico = "update ordem_servico set id_situacao_os = 4 where id_os = " . $idOS;  
+        }else{
+           $sqlInsertServico = "update ordem_servico set id_situacao_os = 8 where id_os = " . $idOS;
+        }
+        
+     
+        mysql_query($sqlInsertServico, $connection);
+
+        $sqlInsertAvaliacao = "insert into qualificacao_servico_prestado (nota, consideracoes,avaliacao,id_profissional, ordem_servico_numero_os) "
+                . "values ('".$mediaSatisfatoria."','".$consideracoes."','".$avaliacao."',".$servico['id_profissional'].",".$servico['numero_os'].")";
+         mysql_query($sqlInsertAvaliacao, $connection);
+         
+         $sqlQualificacaoProf = "select * from qualificacao_profissional where id_profissional = ".$servico['id_profissional'];
+         
+         $res = mysql_query($sqlQualificacaoProf);	
+         $arrayProfissional = array();	
+        		
+         while($row=mysql_fetch_assoc($res)){		
+             $arrayProfissional = $row;	
+             
+         }
+         $totalReclamacoes = $arrayProfissional['total_reclamacoes'];
+         $totalSatisfeitos = $arrayProfissional['total_satisfeitos'];
+         $mediaAtendimento = $arrayProfissional['media_atendimento'];
+        if($mediaSatisfatoria >= 1 && $mediaSatisfatoria <= 2){
+             $totalReclamacoes = $totalReclamacoes + 1;
+        }else{
+            $totalSatisfeitos = $totalSatisfeitos  + 1;
+        }
+         
+        $mediaAtendimento = ($totalReclamacoes + ($totalSatisfeitos * 2)) / 3;
+       
+          $sqlUpdateQualificacao = "update qualificacao_profissional set total_reclamacoes = ".$totalReclamacoes.", 
+              total_satisfeitos = ".$totalSatisfeitos.", media_atendimento = ".$mediaAtendimento." where id_profissional = ".$servico['id_profissional'];
+         mysql_query($sqlUpdateQualificacao, $connection);
+         
+           }
+        echo mysql_errno($connection) . ": " . mysql_error($connection) . "\n";
+    }
+    
+    
+    
     function getServicoPorUsuario($idUsuario) {
         $connectionFactory = new connectionFactory();
         $connection = $connectionFactory->getConnection();
@@ -98,7 +173,7 @@ situacaoOs.situacao as descricaoSituacaoOS,
 serv.cod_servico as codigoServico, serv.prazo as prazoServico, 
             serv.preco_sugerido as precoServico, catServ.nome as nomeServico, p.nome, 
             serv.imagem_principal imagemPrincipal, bairro.Nome_Bairro as nomeBairro, usuarioCliente.id_usuario as usuarioClienteID, usuarioProfissional.id_usuario as usuarioProfissionalID, situacaoOs.idsituacao_os as idSituacaoOS,
-            
+            usuarioCliente.email as emailCliente, usuarioCliente.fotoPerfil as fotoPerfilCliente, 
         cidade.Nome_Cidade as nomeCidade
 from ordem_servico os, profissional p, cliente c, usuario usuarioCliente, usuario usuarioProfissional, situacao_os situacaoOs,
 servico serv,categoria_servico catServ, tb_logradouro logradouro, tb_bairro bairro , tb_cidade cidade

@@ -65,4 +65,50 @@ class EmpregadoDAO {
         }
 
 }
+ function incluirEmpregador($usuario, $nome, $telefoneCompleto, $dataNascimento) {
+         $connectionFactory = new connectionFactory();
+         $connection = $connectionFactory->getConnection();
+         
+       
+         
+         $sqlInsertUsuario = "INSERT INTO usuario(login,senha,email, idsituacao, expiracao, cpf_cnpj, complemento, tb_logradouro_PK_logradouro) "
+                 . "values ('".$usuario->getLogin()."','".$usuario->getSenha()."',"
+                 . "'".$usuario->getEmail()."',".$usuario->getSituacao().","
+                 . "'".$usuario->getExpiracao()."','".$usuario->getDocIdentificacao()."','".$usuario->getComplementoEndereco()."',".$usuario->getLogradouro()->getIdLogradouro().")";
+           
+         
+           $idLogradouro = $usuario->getLogradouro()->getIdLogradouro();
+         
+         if($idLogradouro == NULL || $idLogradouro == ""){
+                  $sqlInsertUsuario = "INSERT INTO usuario(login,senha,email, idsituacao, expiracao, cpf_cnpj, complemento) "
+                 . "values ('".$usuario->getLogin()."','".$usuario->getSenha()."',"
+                 . "'".$usuario->getEmail()."',".$usuario->getSituacao().","
+                 . "'".$usuario->getExpiracao()."','".$usuario->getDocIdentificacao()."','".$usuario->getComplementoEndereco()."')";
+           
+         }
+
+         mysql_query($sqlInsertUsuario, $connection); 
+               
+      echo mysql_errno($connection) . ": " . mysql_error($connection) . "\n";
+         $idUsuario = mysql_insert_id();
+       
+         $errorUsuario = mysql_errno($connection);
+         
+          $sqlInsertEmpregado = "insert into cliente (nome, telefone, data_nascimento,  id_usuario) "
+                 . "values ('".$nome."','".$telefoneCompleto."','".$dataNascimento."',".$idUsuario.")";  
+           
+        mysql_query($sqlInsertEmpregado, $connection); 
+         echo mysql_errno($connection) . ": " . mysql_error($connection) . "\n";
+         
+        
+        $errorCliente = mysql_errno($connection);
+        mysql_close($connection);
+
+        if($errorCliente == "0" && $errorUsuario == "0"){
+            return true;
+        }else{
+            return false;
+        }
+
+}
 }

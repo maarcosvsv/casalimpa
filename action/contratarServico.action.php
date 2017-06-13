@@ -19,8 +19,8 @@ if(!isset($_SESSION))
 
  $horario = $_POST['horario'];
  $numeroOS = $idUsuario.date('dmyHis');
- echo $numeroOS;
-    $dataInicioSQL = date('Y-m-d', strtotime($dataInicio));
+
+ $dataInicioSQL = date('Y-m-d', strtotime($dataInicio));
 $dataFimSQL = date('Y-m-d', strtotime($dataFim));
  
 $servicoDAO = new ServicoDAO();

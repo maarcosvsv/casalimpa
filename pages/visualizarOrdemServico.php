@@ -28,7 +28,7 @@ $servico = $servicoDAO->getOrdemServicoPorCodigo($ordemServico);
         <div class="container">
 
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-12">
                     <div class="intro-message">
                      
                         <h3>Ordem de Serviço</h3>
@@ -78,23 +78,31 @@ $servico = $servicoDAO->getOrdemServicoPorCodigo($ordemServico);
 
         }
         
-           if($servico['usuarioClienteID'] == $idUsuario  && $servico['idSituacaoOS'] == '2'){
+           if($servico['usuarioClienteID'] == $idUsuario  && $servico['idSituacaoOS'] == '2' && date('Y-m-d', strtotime($servico['dt_fim'])) > date('Y-m-d') ){
             echo ' <a href="/casalimpa/action/ordemServico.action.php?op=confirmarRealizacaoAntecipada&idOs='.$servico['id_os'].'" >
                    <button type="button" class="btn btn-default" aria-label="Left Align">
                     <i class="fa fa-clock-o fa-fw"></i> <span class="network-name">Realização antecipada </span></button></a>';
 
         }
+      
+        
+        if($servico['usuarioClienteID'] == $idUsuario  && $servico['idSituacaoOS'] == '2' && date('Y-m-d', strtotime($servico['dt_fim'])) <= date('Y-m-d') ){
+            echo ' <a href="/casalimpa/action/ordemServico.action.php?op=confirmarRealizacaoAntecipada&idOs='.$servico['id_os'].'" >
+                   <button type="button" class="btn btn-default" aria-label="Left Align">
+                    <i class="fa fa-clock-o fa-fw"></i> <span class="network-name">Confirmar Realização </span></button></a>';
+
+        }
         
         
-        if($servico['usuarioProfissionalID'] == $idUsuario  && $servico['idSituacaoOS'] == '3'){
-            echo ' <a href="/casalimpa/action/ordemServico.action.php?op=avaliacaoProfissional&idOs='.$servico['id_os'].'" >
+        if($servico['usuarioProfissionalID'] == $idUsuario  && $servico['idSituacaoOS'] == '3' || $servico['usuarioProfissionalID'] == $idUsuario && $servico['idSituacaoOS'] == '4'){
+            echo ' <a href="avaliarClienteOS.php?os='.$servico['id_os'].'" >
                    <button type="button" class="btn btn-default" aria-label="Left Align">
                     <i class="fa fa-user fa-fw"></i> <span class="network-name">Avaliar Cliente </span></button></a>';
 
         }
         
-        if($servico['usuarioClienteID'] == $idUsuario  && $servico['idSituacaoOS'] == '3'){
-            echo ' <a href="/casalimpa/action/ordemServico.action.php?op=avaliacaoCliente&idOs='.$servico['id_os'].'" >
+        if($servico['usuarioClienteID'] == $idUsuario  && $servico['idSituacaoOS'] == '3' || $servico['usuarioClienteID'] == $idUsuario  && $servico['idSituacaoOS'] == '5'){
+            echo ' <a href="avaliarProfissionalOS.php?os='.$servico['id_os'].'" >
                    <button type="button" class="btn btn-default" aria-label="Left Align">
                     <i class="fa fa-user fa-fw"></i> <span class="network-name">Avaliar Prestador do Serviço </span></button></a>';
 
@@ -110,52 +118,7 @@ $servico = $servicoDAO->getOrdemServicoPorCodigo($ordemServico);
                 
                 
         }?>
-                        <form id="formContratarServico" method="POST" action="../action/contratarServico.action.php">
-                        <div class="form-group" >
-                            
-                                <input style="display: none;" id="codServico" name="codServico" value="<?php echo($codServico)?>">
-                          
-                                
-                            <label  for="dataInicio">Para quando é o serviço?</label>
-                            <input type="text" id="dataInicio" name="dataInicio" onkeyup="mascara(this, mdata);" maxlength="10" class="form-control" placeholder="Data de início" aria-describedby="basic-addon1" required>
-  </div>
-
-                             <div class="form-group" >
-  <label  for="dataFim">Até quando você precisa deste serviço?</label> 
- 
-  
-  <input type="text" id="dataFim" name="dataFim"  onkeyup="mascara(this, mdata);"  class="form-control" maxlength="10" placeholder="Data de fim" aria-describedby="basic-addon1" required>
-    </div>
-                            
-                             <div class="form-group" >
-  <label  for="dataFim">Qual o horário para iniciar o serviço?</label> 
- 
-  
-  <input type="text" id="horario" name="horario"    onkeyup="mascara(this, mhora);"  class="form-control" maxlength="5" placeholder="Data de fim" aria-describedby="basic-addon1" required>
-    </div>
-
-   <div class="form-group" >
-  <label  for="turnoPreferencia">Qual o turno de sua preferência?</label>
-  <select class="form-control" id="turnoPreferencia" name="turnoPreferencia" required>
- 
-   <option value="MATUTINO">Matutino - Manhã</option>
-   <option value="VESPERTINO">Vespertino - Tarde</option>
-   <option value="INTEGRAL">Integral - Horário comercial (8h - 18h)</option>
-  </select> </div>
-  
-  <div class="form-group" >
-  <label  for="cep">Qual o endereço?</label>
- <input type="text" id="cep" name="cep" onkeypress="return MM_formtCep(event,this,'#####-###');" maxlength="9" class="form-control" placeholder="CEP" required ><br/>
-  </div>
-                            <div class="form-group" >
-                                  <label  for="enderecoCompleto">Endereço selecionado: </label>
-      	<input type="text" id="enderecoCompleto" name="enderecoCompleto" class="form-control" placeholder="Endereço" disabled="true"/><br/>
-       
-                            </div>          
-  <input style="display:none;" type="text" id="idLogradouro" name="idLogradouro" />
-                          
-                               
-                             </form>
+                       
                         
                        
                     </div>

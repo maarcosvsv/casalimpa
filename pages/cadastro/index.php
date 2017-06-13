@@ -78,18 +78,33 @@ session_start();
     </nav>
 <div id="form">
 	<div id="form1">
+           
+        <div class="container">
+              <div class="row">
+                <div class="col-lg-12">
 <p> Faça seu cadastro</p> <br>        
 <p> Dados:</P>
 <form action="../../action/cadastroUsuario.action.php" method="POST">
-	<input type="text" id="nome" name="nome" placeholder="Nome completo"/><br/>
-	<input type="text" id="email" name="email" onblur="validacaoEmail(f1.email)" placeholder="E-mail"/><br/>
-	<input type="text" id="login" name="login" placeholder="Nome de usuario"/><br/>
-	<input type="password" id="senha" name="senha" placeholder="Senha"/><br/>
-	<input type="text" id="docIdentificacao" onkeyup="somenteNumeros(this)" name="docIdentificacao" maxlength="14" placeholder="CPF/CNPJ"/><br><br>
+ <div class="form-group">	
+    <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome completo"/><br/>
+ </div><div class="form-group">
+    <input type="text" class="form-control" id="email" name="email" onblur="validacaoEmail(f1.email)" placeholder="E-mail"/><br/>
+</div>	 <div class="form-group">
+    <input type="text" class="form-control" id="login" name="login" placeholder="Nome de usuario"/><br/>
+</div>	 <div class="form-group">
+    <input type="password"   class="form-control" id="senha" name="senha" placeholder="Senha"/><br/>
+</div>	
+     <div class="form-group">
+    <input type="text" class="form-control" id="docIdentificacao" onkeyup="somenteNumeros(this)" name="docIdentificacao" maxlength="14" placeholder="CPF/CNPJ"/><br><br>
 	<p>Telefone:</p>
-	<input type="text" id="dddTelefone" name="dddTelefone" onkeyup="somenteNumeros(this);" maxlength="2" placeholder="DDD" />
-	<input type="text" id="telefone"  name="telefone"onkeyup="somenteNumeros(this);"  maxlength="9" placeholder="Telefone"  /><br><br>
-	<p>Data de nascimento:</p>
+
+        </div>
+        <div class="form-group">
+        <input type="text"  class="form-control" id="dddTelefone" name="dddTelefone" onkeyup="somenteNumeros(this);" maxlength="2" placeholder="DDD" />
+	<input type="text" class="form-control" id="telefone"  name="telefone"onkeyup="somenteNumeros(this);"  maxlength="9" placeholder="Telefone"  /><br><br>
+	</div>
+<div class="form-group">
+        <p>Data de nascimento:</p>
 	<input type="txt" id="nasc_dia" name="nasc_dia" onkeyup="somenteNumeros(this)" placeholder="Dia" maxlength="2"/>
 		<select id="nasc_mes" name="nasc_mes">
 			<option value="01">Janeiro</option>
@@ -105,15 +120,15 @@ session_start();
 			<option value="11">Novembro</option>
 			<option value="12">Dezembro</option>
 		</select>
-	<input type="txt" id="nasc_ano" name="nasc_ano" onkeyup="somenteNumeros(this)" placeholder="ano" maxlength="4"/><br><br>
-	
+	<input type="txt" class="form-control" id="nasc_ano" name="nasc_ano" onkeyup="somenteNumeros(this)" placeholder="ano" maxlength="4"/><br><br>
+</div>	
 	<p>Endereço:</p>
-	<input type="text" id="cep" name="cep" onkeypress="return MM_formtCep(event,this,'#####-###');" maxlength="9" placeholder="CEP"/><br/>
-	<input type="text" id="logradouro" name="logradouro" placeholder="Logradouro"/><br/>
-	<input type="text" id="cidade" name="cidade" placeholder="Cidade"/><br/>
-	<input type="text" id="bairro" name="bairro" placeholder="Bairro"/><br/>
-        <input type="text" id="uf" name="UF" placeholder="Estado"/><br/>
-        <input type="text" id="complemento" name="complemento" placeholder="Complemento"/><br/>
+	<input type="text" class="form-control" id="cep" name="cep" onkeypress="return MM_formtCep(event,this,'#####-###');" maxlength="9" placeholder="CEP"/><br/>
+	<input type="text" class="form-control" id="logradouro" name="logradouro" placeholder="Logradouro"/><br/>
+	<input type="text" class="form-control" id="cidade" name="cidade" placeholder="Cidade"/><br/>
+	<input type="text" class="form-control" id="bairro" name="bairro" placeholder="Bairro"/><br/>
+        <input type="text" class="form-control" id="uf" name="UF" placeholder="Estado"/><br/>
+        <input type="text" class="form-control"id="complemento" name="complemento" placeholder="Complemento"/><br/>
 	 <input style="display:none;" type="text" id="idLogradouro" name="idLogradouro" />
 	
         <div class="row">

@@ -1,4 +1,11 @@
-<!DOCTYPE html>
+<?php
+	session_start(); 
+	if(isset($_SESSION["usuario"])){
+		header('Location: /casaLimpa/pages/dashboard.php');
+	}
+
+	
+	?><!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
@@ -9,11 +16,16 @@
     <meta name="description" content="">
     <meta name="author" content="">
 <script language="JavaScript" type="text/javascript" src="../../resources/js/script.js"></script>
+<!--  adicionar o jquery-->
+<script language="JavaScript" type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+ <!-- Datepicker -->
+ <link href="resources/css/bootstrap-datepicker.css" rel="stylesheet">
+
     <title>Casa Limpa</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="resources/css/bootstrap.min.css" rel="stylesheet">
-
+    <link href="resources/css/estilo.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="resources/css/landing-page.css" rel="stylesheet">
         <!-- Custom Fonts -->
@@ -74,18 +86,19 @@
 
             <div class="row">
                 <div class="col-lg-12">
+                    <div class="col-sm-offset-4 col-sm-4">
                     <div class="intro-message">
                         <h1>Casa Limpa</h1>
                         
                         <h3>Encontre um empregado carinhoso</h3>
-                        <form action="#" method="POST">
-                            <input type="text" />
-                            <input type="text" placeholder="calendario datepicker"/>
-                            <input type="submit" value="Buscar">
+                        <form action="#" method="GET">
+                            <input type="text" class="form-control" placeholder="Serviço ">
+                            <input type="text" id="calendario" class="form-control" placeholder="Data do serviço">
+                            <input type="submit" value="Buscar" >
                         </form>
                         <hr class="intro-divider">
                         
-                        <ul class="list-inline intro-social-buttons">
+                        <!-- <ul class="list-inline intro-social-buttons">
                             <li>
                                 <a href="https://twitter.com/SBootstrap" class="btn btn-default btn-lg"> <span class="network-name">botão 1</span></a>
                             </li>
@@ -95,7 +108,8 @@
                             <li>
                                 <a href="#" class="btn btn-default btn-lg"><i class="fa fa-linkedin fa-fw"></i> <span class="network-name">Linkedin</span></a>
                             </li>
-                        </ul>
+                        </ul> -->
+                        </div>
                     </div>
                 </div>
             </div>
@@ -116,8 +130,8 @@
                 <div class="col-lg-5 col-sm-6">
                     <hr class="section-heading-spacer">
                     <div class="clearfix"></div>
-                    <h2 class="section-heading">Death to the Stock Photo:<br>Special Thanks</h2>
-                    <p class="lead">A special thanks to <a target="_blank" href="http://join.deathtothestockphoto.com/">Death to the Stock Photo</a> for providing the photographs that you see in this template. Visit their website to become a member.</p>
+                    <h2 class="section-heading">Como funciona:</h2>
+                    <p class="lead">Com o Casa Limpa você pode buscar pessoas que prestam serviços conforme a sua necessidade. </p>
                 </div>
                 <div class="col-lg-5 col-lg-offset-2 col-sm-6">
                     <img class="img-responsive" src="resources/img/ipad.png" alt="">
@@ -138,8 +152,8 @@
                 <div class="col-lg-5 col-lg-offset-1 col-sm-push-6  col-sm-6">
                     <hr class="section-heading-spacer">
                     <div class="clearfix"></div>
-                    <h2 class="section-heading">3D Device Mockups<br>by PSDCovers</h2>
-                    <p class="lead">Turn your 2D designs into high quality, 3D product shots in seconds using free Photoshop actions by <a target="_blank" href="http://www.psdcovers.com/">PSDCovers</a>! Visit their website to download some of their awesome, free photoshop actions!</p>
+                    <h2 class="section-heading">Cadastre-se e explore as oportunidades:</h2>
+                    <p class="lead">Você pode buscar os serviços conforme as categorias e selecionar as datas que mais precisa.</p>
                 </div>
                 <div class="col-lg-5 col-sm-pull-6  col-sm-6">
                     <img class="img-responsive" src="resources/img/dog.png" alt="">
@@ -160,8 +174,8 @@
                 <div class="col-lg-5 col-sm-6">
                     <hr class="section-heading-spacer">
                     <div class="clearfix"></div>
-                    <h2 class="section-heading">Google Web Fonts and<br>Font Awesome Icons</h2>
-                    <p class="lead">This template features the 'Lato' font, part of the <a target="_blank" href="http://www.google.com/fonts">Google Web Font library</a>, as well as <a target="_blank" href="http://fontawesome.io">icons from Font Awesome</a>.</p>
+                    <h2 class="section-heading">Utilize e varios dispositivos:</h2>
+                    <p class="lead"></p>
                 </div>
                 <div class="col-lg-5 col-lg-offset-2 col-sm-6">
                     <img class="img-responsive" src="resources/img/phones.png" alt="">
@@ -175,33 +189,19 @@
     <!-- /.content-section-a -->
 
 	<a  name="contact"></a>
+     
     <div class="banner">
 
         <div class="container">
 
             <div class="row">
-                <div class="col-lg-6">
-                    <h2>Connect to Start Bootstrap:</h2>
-                </div>
-                <div class="col-lg-6">
-                    <ul class="list-inline banner-social-buttons">
-                        <li>
-                            <a href="https://twitter.com/SBootstrap" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Twitter</span></a>
-                        </li>
-                        <li>
-                            <a href="https://github.com/IronSummitMedia/startbootstrap" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Github</span></a>
-                        </li>
-                        <li>
-                            <a href="#" class="btn btn-default btn-lg"><i class="fa fa-linkedin fa-fw"></i> <span class="network-name">Linkedin</span></a>
-                        </li>
-                    </ul>
-                </div>
+               
             </div>
 
         </div>
         <!-- /.container -->
-
     </div>
+    
     <!-- /.banner -->
 
     <!-- Footer -->
@@ -211,19 +211,19 @@
                 <div class="col-lg-12">
                     <ul class="list-inline">
                         <li>
-                            <a href="#">Home</a>
+                            <a href="#">Inicio</a>
                         </li>
                         <li class="footer-menu-divider">&sdot;</li>
                         <li>
-                            <a href="#about">About</a>
+                            <a href="#about">Sobre</a>
                         </li>
                         <li class="footer-menu-divider">&sdot;</li>
                         <li>
-                            <a href="#services">Services</a>
+                            <a href="#services">Como funciona</a>
                         </li>
                         <li class="footer-menu-divider">&sdot;</li>
                         <li>
-                            <a href="#contact">Contact</a>
+                            <a href="#contact">Contato</a>
                         </li>
                     </ul>
                     <p class="copyright text-muted small">Copyright &copy; Your Company 2014. All Rights Reserved</p>
@@ -233,12 +233,22 @@
     </footer>
 
     <!-- jQuery -->
-    <script src="resources/js/jquery.js"></script>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!--datepicker -->
+    <script src="resources/js/bootstrap-datepicker.js"></script>
+    <script src="resources/locales/bootstrap-datepicker.pt-BR.min.js"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="resources/js/bootstrap.min.js"></script>
 
-
+<script>
+      $(document).ready(function () {
+        $('#calendario').datepicker({
+            format: "dd/mm/yyyy",
+            language: "pt-BR",
+           
+        });
+      });
+    </script>
 </body>
 
 </html>

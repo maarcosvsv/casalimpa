@@ -16,8 +16,7 @@ $avaliacaoProfissional = $avaliacaoDAO->getAvaliacaoProfissional($idUsuario);
 <div id="form" style="height: 500px !important">
 	<div id="form1">
 
-    <!-- Header -->
-    <a name="about"></a>
+   
     <div class="intro-header">
         <div class="container">
 
@@ -190,10 +189,10 @@ $avaliacaoProfissional = $avaliacaoDAO->getAvaliacaoProfissional($idUsuario);
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-3">
-                                    <i class="fa fa-shopping-cart fa-5x"></i>
+                                    <i class="fa fa-sign-language fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge"><?= $avaliacaoProfissional['media_atendimento'] ?>%</div>
+                                    <div class="huge"><?= $avaliacaoProfissional['media_atendimento'] ?></div>
                                     <div>Média satisfatória!</div>
                                 </div>
                             </div>

@@ -1,4 +1,4 @@
-<?php
+te<?php
 
 require_once '../entity/Bairro.class.php';
 require_once '../entity/Cidade.class.php';

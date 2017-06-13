@@ -11,8 +11,6 @@ $servicoDAO = new ServicoDAO();
 $servicos = $servicoDAO->getServicoPorUsuario($usuario->getIdUsuario());
 include '../resources/layoutInterno.php';
 
-
-
         ?>
 
 <div id="form" style="height: 500px !important">
@@ -53,6 +51,7 @@ include '../resources/layoutInterno.php';
     </thead>
       <tbody>
         <?php
+        
 	foreach ($servicos as $servico){
             echo " <tr><th>".$servico['nomeServico']."</th>";
             echo "<th>".$servico['prazoServico']."</th>";
@@ -60,22 +59,18 @@ include '../resources/layoutInterno.php';
             echo "<th>".$servico['nome']."</th>";
             echo "<th>".$servico['registro_salarial']."</th>";
            echo '<th><img src="data:image/jpeg;base64,' .  base64_encode($servico['imagemPrincipal']). '" /></th>';
-               echo '<th><button type="submit" class="btn btn-default" aria-label="Left Align">
+               echo '<th><button type="submit" name="'.$servico['codigoServico'].'" class="btn btn-default" aria-label="Left Align">
+  <i class="glyphicon glyphicon-eye-open"></i>
+</button><button type="submit" name="'.$servico['codigoServico'].'" onClick="identifica(this);" class="btn btn-default" aria-label="Left Align">
+  <i class="glyphicon glyphicon-remove"></i>
+</button><button type="submit" name="'.$servico['codigoServico'].'" onClick="identifica(this);" class="btn btn-default" aria-label="Left Align">
   <i class="fa fa-sign-in fa-fw"></i>
-</button><button type="submit" class="btn btn-default" aria-label="Left Align">
-  <i class="fa fa-sign-in fa-fw"></i>
-</button><button type="submit" class="btn btn-default" aria-label="Left Align">
-  <i class="fa fa-sign-in fa-fw"></i>
-</button></th>  </tr>';
+</button></th>  </tr>';      
+        }                
         
-        }
-
-         
-      
-
-   ?>   
- 
-    </tbody>
+        ?>   
+           
+    </tbody>    
   </table>
 </div>
                       
@@ -86,11 +81,22 @@ include '../resources/layoutInterno.php';
         </div>
         <!-- /.container -->
 
+        <div class="container view">
+            <div class="row">
+                <div class="col-md-12 ">
+                    
+                                                          
+                </div>
+            </div>
+        </div>
+        
     </div>
     <!-- /.intro-header -->
 
    
         </div></div>
+
+<script src="..\resources\js\visualizar.js"></script>
 
 </body>
 
