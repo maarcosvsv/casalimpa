@@ -59,11 +59,11 @@ include '../resources/layoutInterno.php';
             echo "<th>".$servico['nome']."</th>";
             echo "<th>".$servico['registro_salarial']."</th>";
            echo '<th><img src="data:image/jpeg;base64,' .  base64_encode($servico['imagemPrincipal']). '" /></th>';
-               echo '<th><button type="submit" id="'.$servico['codigoServico'].'" class="btn btn-default" aria-label="Left Align">
-  <i class="glyphicon glyphicon-eye-open"></i>
-</button><a href="listaServicos.php?id='.$servico["codigoServico"].'"><button type="submit" id="'.$servico['codigoServico'].'" onClick="identifica(this);" class="btn btn-default" aria-label="Left Align">
-  <i class="glyphicon glyphicon-remove"></i>
-</button></a><button type="submit" id="'.$servico['codigoServico'].'" onClick="identifica(this);" class="btn btn-default" aria-label="Left Align">
+               echo '<th><a href="listaServicos.php?id='.$servico["codigoServico"].'&acao=1"><button type="submit" id="'.$servico['codigoServico'].'" class="btn btn-default" aria-label="Left Align">
+  <i class="glyphicon glyphicon-eye-open"></i></button></a>
+  <a href="listaServicos.php?id='.$servico["codigoServico"].'&acao=2"><button type="submit" id="'.$servico['codigoServico'].'" onClick="identifica(this);" class="btn btn-default" aria-label="Left Align">
+  <i class="glyphicon glyphicon-remove"></i></button></a>
+  <button type="submit" id="'.$servico['codigoServico'].'" onClick="identifica(this);" class="btn btn-default" aria-label="Left Align">
   <i class="fa fa-sign-in fa-fw"></i>
 </button></th>  </tr>';      
         }                                
@@ -84,9 +84,19 @@ include '../resources/layoutInterno.php';
         <div class="container view">
             <div class="row">
                 <div class="col-md-12 ">
-                
-                    <?php include_once '../action/del_row.php'; ?> 
-                                                          
+               
+                    <?php                                                                        
+                        include_once '../action/del_row.php';
+                        include_once '../action/ver_dados.php';
+                    ?>                                                                   
+                    
+                </div>
+            </div>
+        </div>
+        <div class="container space">
+            <div class="row">
+                <div class="col-md-12 ">
+                   
                 </div>
             </div>
         </div>

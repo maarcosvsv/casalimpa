@@ -5,29 +5,12 @@
  */
 
 
-//function identifica(campo) {        
-//        var nome = campo.name;
-//        alert(nome);        
-//    }
-
-
 $(document).ready(function(){
     
     
-//    $("button").click(function(){;
-//        $(".view").css("visibility","visible");
-//    });
+    $(".view").click(function(){
+        $(".view").css("visibility","visible");
+    });
     
-    $("button").click(function(){
-        $.ajax({
-        url:"../action/delete_row.php", //the page containing php script
-        type: "POST", //request type
-        success:function(result){
-            alert(result);
-            }
-        });
-    
-});
-
 });
 

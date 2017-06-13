@@ -11,10 +11,19 @@
 $connectionFactory = new connectionFactory();
 $connection = $connectionFactory->getConnection();
 
-if(isset($_GET['id'])){
-    
-$query = "UPDATE servico SET ativo = 0 WHERE cod_servico = ".$_GET['id'].";";
-$result = mysql_query($query, $connection);
-//header("location: ../action/listaServicos.php");
+//if(isset($_GET['id'])){
+//$query = "UPDATE servico SET ativo = 0 WHERE cod_servico = ".$_GET['id'].";";
+//$result = mysql_query($query, $connection);
+////header("location: ../action/listaServicos.php?id=0");
+//}
 
+
+if (isset($_GET['id'])){
+    if (isset($_GET['acao'])) {
+        
+        if ($_GET['acao'] == 2) {
+            $query = "UPDATE servico SET ativo = 0 WHERE cod_servico = ".$_GET['id'].";";
+            $result = mysql_query($query, $connection);            
+        }
+    }
 }
