@@ -54,7 +54,7 @@ include '../resources/layoutInterno.php';
   </div>     
                                         <div class="form-group">
     <label for="preco">Preço sugerido</label>
-  <input type="text" id="preco" name="preco" class="form-control" placeholder="Preço sugerido em R$" aria-describedby="basic-addon1" required>
+  <input type="text" id="preco" name="preco" class="form-control" placeholder="Preço sugerido em R$" onkeyup="mascara(this, mvalorDouble);"  aria-describedby="basic-addon1" required>
    
   </div>   
                                         <div class="form-group">

@@ -193,7 +193,7 @@ serv.cod_servico as codigoServico, serv.prazo as prazoServico,
             p.nome as nomeProfissional, p.telefone as telefoneProfissional, 
             p.registro_salarial as registroSalarialProfissional,p.area_atuacao as areaAtuacaoProfissional,
             c.nome as nomeCliente, c.telefone as telefoneCliente, DATE_FORMAT(c.data_nascimento,'%d/%m/%Y') AS dtNascimentoCliente,
-            
+            serv.observacoes as observacoesServico,
         cidade.Nome_Cidade as nomeCidade
         
 
@@ -245,7 +245,7 @@ situacaoOs.situacao as descricaoSituacaoOS,
 serv.cod_servico as codigoServico, serv.prazo as prazoServico, 
             serv.preco_sugerido as precoServico, catServ.nome as nomeServico, p.nome, 
             serv.imagem_principal imagemPrincipal, bairro.Nome_Bairro as nomeBairro, 
-            
+             serv.observacoes as observacoesServico,
         cidade.Nome_Cidade as nomeCidade
 from ordem_servico os, profissional p, cliente c, usuario usuarioCliente, usuario usuarioProfissional, situacao_os situacaoOs,
 servico serv,categoria_servico catServ, tb_logradouro logradouro, tb_bairro bairro , tb_cidade cidade
@@ -293,7 +293,7 @@ $connection = $connectionFactory->getConnection();
 $sqlServico = "select serv.cod_servico as codigoServico, serv.prazo as prazoServico, 
             serv.preco_sugerido as precoServico, catServ.nome as nomeServico, p.nome, 
             p.registro_salarial, serv.imagem_principal imagemPrincipal, bairro.Nome_Bairro as nomeBairro, 
-            
+            serv.observacoes,
         cidade.Nome_Cidade as nomeCidade
 
 from servico serv, profissional p, categoria_servico catServ, tb_logradouro logradouro, tb_bairro bairro , tb_cidade cidade, usuario u
@@ -347,7 +347,7 @@ $connection = $connectionFactory->getConnection();
 $sqlServico = "select serv.cod_servico as codigoServico, serv.prazo as prazoServico, 
             serv.preco_sugerido as precoServico, catServ.nome as nomeServico, p.nome, 
             p.registro_salarial, serv.imagem_principal imagemPrincipal, bairro.Nome_Bairro as nomeBairro, 
-            
+            serv.observacoes as observacoesServico,
         cidade.Nome_Cidade as nomeCidade
 
 from servico serv, profissional p, categoria_servico catServ, tb_logradouro logradouro, tb_bairro bairro , tb_cidade cidade, usuario u

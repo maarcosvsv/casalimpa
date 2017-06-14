@@ -56,8 +56,8 @@ $servico = $servicoDAO->getServicoPorCodigo($codServico);
         echo"<b>Preço Sugerido:</b> R$ ".$servico['precoServico']."<br>";
         echo"<b>Categoria:</b> ".$servico['nomeServico']."<br>";
         echo"<b>Prestador do Serviço:</b> ".$servico['nome']."<br>";
-        echo"<b>Cidade Principal:</b> ".$servico['nomeCidade']." - ".$servico['nomeBairro']." </td>";
-        
+        echo"<b>Cidade Principal:</b> ".$servico['nomeCidade']." - ".$servico['nomeBairro']."<br>";
+        echo"<b>Observações do prestador: </b>".$servico['observacoesServico']."</td>";
        
         echo"</tr>";
         }//for

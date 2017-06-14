@@ -65,6 +65,7 @@ $servico = $servicoDAO->getOrdemServicoPorCodigo($ordemServico);
         echo"<b>Horário de preferência para início:</b> ".$servico['horario']."<br>";
         echo"<b>Prestador do Serviço: </b>".$servico['nome']."<br>";
         echo"<b>Cliente: </b>".$servico['nomeCliente']."<br>";
+        echo"<b>Observações do prestador: </b>".$servico['observacoesServico']."<br>";
         echo"<b>Última atualização: </b>".$servico['descricaoSituacaoOS']."<br><br>";
         echo "</td>";
        
