@@ -1,7 +1,7 @@
 $(document).ready( function() {
    /* Executa a requisição quando o campo CEP perder o foco */
    $('#cep').blur(function(){
-   
+ 
            /* Configura a requisição AJAX */
             $('#logradouro').val('');
             $('#bairro').val('');
@@ -23,7 +23,6 @@ $(document).ready( function() {
                         $('#uf').val(data.uf);
                         $('#idLogradouro').val(data.idLogradouro);
                         $('#enderecoCompleto').val(data.logradouro + ' '+ data.bairro + ', ' + data.cidade+ ' - ' + data.uf);
-                        
                         $('#complemento').focus();
      
                     }

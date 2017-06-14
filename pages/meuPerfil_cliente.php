@@ -26,15 +26,15 @@ if (isset($_GET['ed'])) {
         <div class="container">
 
             <div class="row">
-                <div class="col-lg-10">
+                <div class="col-lg-12">
                     <div class="intro-message">
         <br>
-        <h3>Meu Perfil - Cliente</h3>
+        <h3>Meu Perfil - Empregador</h3>
         <hr>
         <ul class="nav nav-tabs">
             <li ><a href="meuPerfil.php">Perfil principal</a></li>
             <li ><a href="meuPerfil_prestador.php">Prestador de Serviços</a></li>
-            <li class="active"><a href="#">Cliente</a></li>
+            <li class="active"><a href="#">Empregador</a></li>
 
         </ul>
 <?php
@@ -52,9 +52,9 @@ if ($edicao == false && $block == false) {
 
     if ($usuario->getFotoPerfil() != null) {
 
-        echo '<td width="30%"><img height="200" width="200" src="data:image/jpeg;base64,' . base64_encode($usuario->getFotoPerfil()) . '" /></td>';
+        echo '<td width="10%"><img height="200" width="200" src="data:image/jpeg;base64,' . base64_encode($usuario->getFotoPerfil()) . '" /></td>';
     } else {
-        echo '<td width="30%"><img height="200" width="200" src="/casaLimpa/resources/img/interno/nophoto.png" /></td>';
+        echo '<td width="10%"><img height="200" width="200" src="/casaLimpa/resources/img/interno/nophoto.png" /></td>';
     }
 
 
@@ -86,9 +86,9 @@ if ($edicao == false && $block == false) {
 
     if ($usuario->getFotoPerfil() != null) {
 
-        echo '<td width="30%"><img height="200" width="200" src="data:image/jpeg;base64,' . base64_encode($usuario->getFotoPerfil()) . '" /></td>';
+        echo '<td width="10%"><img height="200" width="200" src="data:image/jpeg;base64,' . base64_encode($usuario->getFotoPerfil()) . '" /></td>';
     } else {
-        echo '<td width="30%"><img height="200" width="200" src="/casaLimpa/resources/img/interno/nophoto.png" /></td>';
+        echo '<td width="10%"><img height="200" width="200" src="/casaLimpa/resources/img/interno/nophoto.png" /></td>';
     }
 
     echo '<td>'
@@ -155,7 +155,7 @@ if ($edicao == false && $block == false) {
                 </div>
                 
                 <div class="form-group" >
-                    <label  for="data_nascimento">Registro Salarial</label>
+                    <label  for="data_nascimento">Data de nascimento</label>
                     <input type="text" id="data_nascimento" name="data_nascimento"  value="<?php echo($cliente['data_nascimento']); ?>" class="form-control" placeholder="Preencha aqui seu número de registro salarial (PIS)" aria-describedby="basic-addon1" required>
                 </div>
                 

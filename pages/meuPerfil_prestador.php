@@ -26,7 +26,7 @@ if (isset($_GET['ed'])) {
         <div class="container">
 
             <div class="row">
-                <div class="col-lg-10">
+                <div class="col-lg-12">
                     <div class="intro-message">
         <br>
         <h3>Meu Perfil - Prestador de Serviços</h3>
@@ -34,7 +34,7 @@ if (isset($_GET['ed'])) {
         <ul class="nav nav-tabs">
             <li ><a href="meuPerfil.php">Perfil principal</a></li>
             <li class="active"><a href="">Prestador de Serviços</a></li>
-            <li><a href="meuPerfil_cliente.php">Cliente</a></li>
+            <li><a href="meuPerfil_cliente.php">Empregador</a></li>
 
         </ul>
 <?php
@@ -52,9 +52,9 @@ if ($edicao == false && $block == false) {
 
     if ($usuario->getFotoPerfil() != null) {
 
-        echo '<td><img height="200" width="200" src="data:image/jpeg;base64,' . base64_encode($usuario->getFotoPerfil()) . '" /></td>';
+        echo '<td width="10%"><img height="200" width="200" src="data:image/jpeg;base64,' . base64_encode($usuario->getFotoPerfil()) . '" /></td>';
     } else {
-        echo '<td><img height="200" width="200" src="/casaLimpa/resources/img/interno/nophoto.png" /></td>';
+        echo '<td width="10%"><img height="200" width="200" src="/casaLimpa/resources/img/interno/nophoto.png" /></td>';
     }
 
 
@@ -96,9 +96,9 @@ if ($edicao == false && $block == false) {
 
     if ($usuario->getFotoPerfil() != null) {
 
-        echo '<td width="30%"><img height="200" width="200" src="data:image/jpeg;base64,' . base64_encode($usuario->getFotoPerfil()) . '" /></td>';
+        echo '<td width="10%"><img height="200" width="200" src="data:image/jpeg;base64,' . base64_encode($usuario->getFotoPerfil()) . '" /></td>';
     } else {
-        echo '<td width="30%"><img height="200" width="200" src="/casaLimpa/resources/img/interno/nophoto.png" /></td>';
+        echo '<td width="10%"><img height="200" width="200" src="/casaLimpa/resources/img/interno/nophoto.png" /></td>';
     }
 
     echo '<td>'

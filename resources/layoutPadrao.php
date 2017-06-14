@@ -10,7 +10,10 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">	
-
+ <script language="JavaScript" type="text/javascript" src="../resources/js/JQUERY8.js"></script> 
+ 	<script language="JavaScript" type="text/javascript" src="../resources/js/jquery.js"></script>
+   <script language="JavaScript" type="text/javascript" src="../resources/js/script.js"></script>
+ 	<script language="JavaScript" type='text/javascript' src='../ajax/cep.ajax.js'></script>
 	<meta charset="utf-8">
         <title>CasaLimpa</title>
 	<!-- Bootstrap Core CSS -->
@@ -53,14 +56,9 @@ session_start();
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
+                    
                     <li>
-                        <a href="../../#about">Sobre</a>
-                    </li>
-                    <li>
-                        <a href="../../#services">Como funciona</a>
-                    </li>
-                    <li>
-                        <a href="/casaLimpa/pages/cadastro">Cadastre-se</a>
+                        <a href="/casaLimpa/pages/cadastroUsuario.php">Cadastre-se</a>
                     </li>
                     <li>
                         <?php
@@ -68,7 +66,7 @@ session_start();
                         if(!isset($_SESSION["usuario"])){
                             ?>
                         
-                          <a href="/casaLimpa/pages/login.php">Entrar</a>   
+                          <a href="/casaLimpa/pages/login.php">Login</a>   
                         <?php    
                         }else{
                             ?>

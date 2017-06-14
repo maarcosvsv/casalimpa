@@ -182,15 +182,19 @@ function getUsuarioProfissional($idUsuario) {
         $connection = $connectionFactory->getConnection();
        
          $sqlProf = "select * from profissional where id_usuario = ".$idUsuario;
-         
+         echo mysql_errno($connection) . ": " . mysql_error($connection) . "\n";
          $res = mysql_query($sqlProf, $connection);	
          $arrayProfissional = array();
-        		
+         
+          if (mysql_num_rows($res) > 0) {
          while($row=mysql_fetch_assoc($res)){
              
              $arrayProfissional = $row;	
              
-         }
+          }}
+          else{
+              $arrayProfissional = NULL;
+          }
          
          if(sizeof($arrayProfissional) > 0){
              return $arrayProfissional;

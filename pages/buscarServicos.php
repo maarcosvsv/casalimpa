@@ -1,9 +1,13 @@
 <?php
 include_once '../entity/Usuario.class.php';
 include_once '../dao/Servico.dao.php';
-
-
+include_once '../dao/Usuario.dao.php';
 session_start();
+$usuario = $_SESSION['usuario'];
+$idUsuario = $usuario->getIdUsuario();
+$usuarioDAO = new UsuarioDAO();
+$verificacaoUsuarioCliente = $usuarioDAO->getUsuarioCliente($idUsuario);
+
 
 include '../dao/Endereco.dao.php';
 $servicoDAO = new ServicoDAO();
@@ -21,7 +25,7 @@ else{
     $idBairro = null;
 }
 $categoriaServico = false;
-if($idCidade > 0){
+if($idCidade > 0 && $idBairro == null){
     $bairros = $enderecoDAO->getBairrosPorCidade($idCidade);
 }else if($idCidade == "todasCidades"){
    $categoriaServico = true;
@@ -57,6 +61,7 @@ include '../resources/layoutInterno.php';
                      
                         <h3>Encontrar um serviço</h3>
                         <hr class="intro-divider">
+ <?php if($verificacaoUsuarioCliente != null){ ?>
  
                         <form id="formFiltro" method="POST" action="buscarServicos.php">
                        
@@ -95,9 +100,11 @@ if($idCidade == null && $idBairro == null){
                             
                                             <?php 
   
-if($idCidade > 0){
+if($idCidade > 0 && $idBairro == null){
    ?>
                          <div class="form-group">
+                               <input style="display: none;" id="idCidade" name="idCidade" value="<?php echo($idCidade)?>">
+                            
   <label for="sel1">Filtrar por bairros</label>
   <select class="form-control" id="idBairro" name="idBairro" >
  
@@ -150,7 +157,12 @@ if($categoriaServico == true){
    ?>               
          
                             
-      
+         <?php 
+} else{
+           echo 'Você não possui perfil para contratar serviços, acesse a aba superior "Meu Perfil" e faça seu cadastro como Empregador.';
+                 
+}
+   ?>   
                     
                 </div>
             </div>

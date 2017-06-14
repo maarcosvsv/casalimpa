@@ -26,7 +26,7 @@ $servico = $servicoDAO->getServicoPorCodigo($codServico);
         <div class="container">
 
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-12">
                     <div class="intro-message">
                      
                         <h3>Contratar um serviço</h3>
@@ -42,21 +42,21 @@ $servico = $servicoDAO->getServicoPorCodigo($codServico);
        
         echo "<tr>";
         if($servico['imagemPrincipal'] != null){
-         echo '<td width="10%"><img height="100" width="100" src="data:image/jpeg;base64,' .  base64_encode($servico['imagemPrincipal']). '" /></td>';
+         echo '<td width="10%"><img height="200" width="200" src="data:image/jpeg;base64,' .  base64_encode($servico['imagemPrincipal']). '" /></td>';
            
         }else{
-             echo '<td width="10%"><img height="100" width="100" src="/casaLimpa/resources/img/interno/nophoto.png" /></td>';
+             echo '<td width="10%"><img height="200" width="200" src="/casaLimpa/resources/img/interno/nophoto.png" /></td>';
         
            
         }
        
                 
         
-        echo"<td>Prazo Médio: ".$servico['prazoServico']."<br>";
-        echo"Preço Sugerido: R$ ".$servico['precoServico']."<br>";
-        echo"Categoria: ".$servico['nomeServico']."<br>";
-        echo"Prestador do Serviço: ".$servico['nome']."<br>";
-        echo"Cidade Principal: ".$servico['nomeCidade']." - ".$servico['nomeBairro']." </td>";
+        echo"<td><b>Prazo Médio:</b> ".$servico['prazoServico']."<br>";
+        echo"<b>Preço Sugerido:</b> R$ ".$servico['precoServico']."<br>";
+        echo"<b>Categoria:</b> ".$servico['nomeServico']."<br>";
+        echo"<b>Prestador do Serviço:</b> ".$servico['nome']."<br>";
+        echo"<b>Cidade Principal:</b> ".$servico['nomeCidade']." - ".$servico['nomeBairro']." </td>";
         
        
         echo"</tr>";
@@ -84,7 +84,7 @@ $servico = $servicoDAO->getServicoPorCodigo($codServico);
   <label  for="dataFim">Qual o horário para iniciar o serviço?</label> 
  
   
-  <input type="text" id="horario" name="horario"    onkeyup="mascara(this, mhora);"  class="form-control" maxlength="5" placeholder="Data de fim" aria-describedby="basic-addon1" required>
+  <input type="text" id="horario" name="horario"    onkeyup="mascara(this, mhora);"  class="form-control" maxlength="5" placeholder="Horário de Início" aria-describedby="basic-addon1" required>
     </div>
 
    <div class="form-group" >
@@ -104,6 +104,12 @@ $servico = $servicoDAO->getServicoPorCodigo($codServico);
                                   <label  for="enderecoCompleto">Endereço selecionado: </label>
       	<input type="text" id="enderecoCompleto" name="enderecoCompleto" class="form-control" placeholder="Endereço" disabled="true"/><br/>
        
+                   <div class="form-group" >
+  <label  for="complemento">Complemento para o Endereço</label> 
+ 
+  
+  <input type="text" id="complemento" name="complemento"    class="form-control"  placeholder="Complemento do endereço" aria-describedby="basic-addon1" required>
+    </div>
                             </div>          
   <input style="display:none;" type="text" id="idLogradouro" name="idLogradouro" />
                           
@@ -127,6 +133,24 @@ $servico = $servicoDAO->getServicoPorCodigo($codServico);
     <!-- /.intro-header -->
 
    
+<script>
+      $(document).ready(function () {
+        $('#dataInicio').datepicker({
+            format: "dd/mm/yyyy",
+            language: "pt-BR",
+           
+        });
+      });
+    </script>
+    <script>
+      $(document).ready(function () {
+        $('#dataFim').datepicker({
+            format: "dd/mm/yyyy",
+            language: "pt-BR",
+           
+        });
+      });
+    </script>
         </div></div>
 
 </body>

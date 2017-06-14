@@ -36,6 +36,7 @@ $servico = $servicoDAO->getOrdemServicoPorCodigo($ordemServico);
  <?php  $num= sizeof($servico);
         if($num>0)
         {
+               echo  'Detalhes da Ordem de Serviço'; 
         echo ' <table class="table" border="0" style="width: 100%" >';
        
         
@@ -43,29 +44,82 @@ $servico = $servicoDAO->getOrdemServicoPorCodigo($ordemServico);
         {
        
         echo "<tr>";
-        if($servico['imagemPrincipal'] != null){
-         echo '<td width="10%"><img height="200" width="200" src="data:image/jpeg;base64,' .  base64_encode($servico['imagemPrincipal']). '" /></td>';
+         if($servico['imagemPrincipal'] != null){
+         echo '<td width="10%"><img height="250" width="250" src="data:image/jpeg;base64,' .  base64_encode($servico['imagemPrincipal']). '" /></td>';
            
         }else{
-             echo '<td><img height="200" width="200" src="/casaLimpa/resources/img/interno/nophoto.png" /></td>';
+             echo '<td><img height="250" width="250" src="/casaLimpa/resources/img/interno/nophoto.png" /></td>';
         
            
         }
        
                 
-        
-        echo"<td>Prazo Médio: ".$servico['prazoServico']."<br>";
-        echo"Preço Sugerido: R$ ".$servico['precoServico']."<br>";
-        echo"Categoria: ".$servico['nomeServico']."<br>";
-        echo"Prestador do Serviço: ".$servico['nome']."<br>";
-        echo"Cidade Principal: ".$servico['nomeCidade']." - ".$servico['nomeBairro']." <br>";
-        echo"Cliente: ".$servico['nomeCliente']."<br>";
-         echo"<b>Última atualização: </b>".$servico['descricaoSituacaoOS']."<br><br>";
+        echo"<td><b>Categoria: </b>".$servico['nomeServico']."<br>";
+        echo"<b>Prazo Médio:</b> ".$servico['prazoServico']."<br>";
+        echo"<b>Preço Sugerido:</b> R$ ".$servico['precoServico']."<br>";
+        echo"<b>Solicitado  para:</b>  ".$servico['dtInicioFormatada']." <b> até: </b>".$servico['dtFimFormatada']." <br>";
+        echo"<b>Turno Preferencial:</b> ".$servico['turno_pref']."<br>";
+        echo"<b>Cidade: </b>".$servico['nomeCidade']." <b>Bairro:</b> ".$servico['nomeBairro']." <br>";
+        echo"<b>Endereço: </b>".$servico['Nome_logradouro']." - ".$servico['CEP_Logradouro']." <br>";
+        echo"<b>Complemento: </b>".$servico['complemento_endereco']." <br>";
+        echo"<b>Horário de preferência para início:</b> ".$servico['horario']."<br>";
+        echo"<b>Prestador do Serviço: </b>".$servico['nome']."<br>";
+        echo"<b>Cliente: </b>".$servico['nomeCliente']."<br>";
+        echo"<b>Última atualização: </b>".$servico['descricaoSituacaoOS']."<br><br>";
         echo "</td>";
        
         echo"</tr>";
+         echo"</table>";
+        
+         echo  'Detalhes do cliente';  
+          echo ' <table class="table" border="0" style="width: 100%" >';
+         echo "<tr>";
+        if($servico['fotoPerfilCliente'] != null){
+         echo '<td width="10%"><img height="200" width="200" src="data:image/jpeg;base64,' .  base64_encode($servico['fotoPerfilCliente']). '" /></td>';
+            
+        }else{
+             echo '<td><img height="200" width="200" src="/casaLimpa/resources/img/interno/nophoto.png" /></td>';
+        
+           
+        }
+         
+        echo"<td><b>Nome: </b>".$servico['nomeCliente']."<br>";
+        echo"<b>Telefone de contato:</b> ".$servico['telefoneCliente']."<br>";
+        echo"<b>E-mail:</b> ".$servico['emailCliente']."<br>";
+        echo "</td>";
+       
+        echo"</tr>";
+          echo"</table>";
+          echo  'Detalhes do Prestador do Serviço';  
+          echo ' <table class="table" border="0" style="width: 100%" >';
+         echo "<tr>";
+        if($servico['fotoPerfilProfissional'] != null){
+         echo '<td width="10%"><img height="200" width="200" src="data:image/jpeg;base64,' .  base64_encode($servico['fotoPerfilProfissional']). '" /></td>';
+            
+        }else{
+             echo '<td><img height="200" width="200" src="/casaLimpa/resources/img/interno/nophoto.png" /></td>';
+        
+           
+        }
+           
+        
+                
+        
+        echo"<td><b>Nome: </b>".$servico['nomeProfissional']."<br>";
+        echo"<b>Telefone de contato:</b> ".$servico['telefoneProfissional']."<br>";
+        echo"<b>E-mail:</b> ".$servico['emailProfissional']."<br>";
+        echo"<b>Registro Salarial:</b> ".$servico['registroSalarialProfissional']."<br>";
+        echo"<b>Área de atuação:</b> ".$servico['areaAtuacaoProfissional']."<br>";
+        echo "</td>";
+       
+        echo"</tr>";
+          echo"</table>";
         }//for
-        echo"</table>";
+        
+        
+        
+        
+     
        
         echo "<br /><center>";
         if($servico['usuarioProfissionalID'] == $idUsuario  && $servico['idSituacaoOS'] == '1'){
@@ -118,7 +172,7 @@ $servico = $servicoDAO->getOrdemServicoPorCodigo($ordemServico);
                 
                 
         }?>
-                       
+                        <br><br><br><br><br>           
                         
                        
                     </div>

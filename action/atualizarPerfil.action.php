@@ -18,11 +18,14 @@ if($operacao == 'global'){
     $email= $_POST['email'];
     $cpf = $_POST['cpf'];
     $idLogradouro = $_POST['idLogradouro'];
-    if(isset($_FILES['fotoPerfil'])){
+    
+    
+    if(isset($_FILES['fotoPerfil']) && $_FILES['fotoPerfil']['error'] == 0){
         $fotoPerfil = $_FILES['fotoPerfil'];
     } else {
         $fotoPerfil = null;
     }
+   
    
     $complemento = $_POST['complemento'];
     

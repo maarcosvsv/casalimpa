@@ -26,7 +26,7 @@ if($operacao == 'confirmarRealizacaoAntecipada'){
    
        $servicoDAO = new ServicoDAO();
        
-      $resultado = $servicoDAO->confirmarRealizacaoServico($idOs) ;  
+      $resultado = $servicoDAO->confirmarRealizacaoAntecipada($idOs) ;  
      
     header("Location: /casaLimpa/pages/visualizarOrdemServico.php?os=".$idOs);
        

@@ -15,35 +15,33 @@
         $docIdentificacao = $_POST['docIdentificacao'];
         $nome = $_POST['nome'];
         $email = $_POST['email'];
-        $ddd = $_POST['dddTelefone'];
         $telefone = $_POST['telefone'];
-        $nasc_dia = $_POST['nasc_dia'];
-        $nasc_mes = $_POST['nasc_mes'];
-        $nasc_ano = $_POST['nasc_ano'];
-        $dataNascimento = $nasc_ano."-".$nasc_mes."-".$nasc_dia;
+        $dataNascimento = $_POST['data_nascimento'];
+        $dataNascimentoSQL = join('-',array_reverse(explode('/',$dataNascimento)));
+ 
         $idLogradouro = $_POST['idLogradouro'];
         $complementoEndereco = $_POST['complemento'];
         $tipoUsuario = $_POST['tipoUsuario'];
   
         $dataExpiracao = date('Y-m-d', strtotime("+90 days"));  
-        $telefoneCompleto = $ddd.$telefone;
+        $telefoneCompleto = $telefone;
         
         $logradouro = new Logradouro($idLogradouro, null, null, null);
               
         $usuario = new Usuario(null, $login, $senha, $email, $dataExpiracao, 1, $complementoEndereco, $logradouro, null, $docIdentificacao);
         $empregado = new Empregado(null, $usuario, $nome, $telefoneCompleto, null, null);
-        
+        $error = false;
         if($tipoUsuario == "EMPREGADO"){
         $empregadoDAO = new EmpregadoDAO();
         $error = $empregadoDAO->incluirEmpregado($empregado);
-        }else if($tipoUsuario == "EMPREGADO"){
+        }else if($tipoUsuario == "EMPREGADOR"){
             $empregadoDAO = new EmpregadoDAO();
-          $error = $empregadoDAO->incluirEmpregador($usuario, $nome, $telefoneCompleto, $dataNascimento);
+          $error = $empregadoDAO->incluirEmpregador($usuario, $nome, $telefoneCompleto, $dataNascimentoSQL);
         }
         
        
         
-         include '../resources/layoutPadrao.php';
+        include '../resources/layoutPadrao.php';
         ?>
 
 <div id="form" style="height: 500px !important">
@@ -55,7 +53,12 @@
          <p>  Prezado <?php echo $_POST['nome']; ?>, seu cadastro foi realizado com sucesso, para continuar faça login no sistema e atualize seus dados.</p>
               <br><br><br>
               <form  action="/casaLimpa">
-    <input type="submit"  value="Voltar para página principal."/>
+                  <center>
+                        <button type="submit" class="btn btn-default" aria-label="Left Align">
+                            <i class="fa fa-home fa-fw"></i> <span class="network-name">Voltar para página principal.</span>
+                        </button>
+                    </center>
+  
 </form>
      
             <?php
@@ -63,7 +66,12 @@
              ?>
       <p>Prezado <?php echo $_POST['nome']; ?>, ocorreu um erro ao salvar sua solicitação, por favor tente novamente.</p>
         <br><br><br>
-      <input type="submit"  onClick="history.go(-1)" value="Voltar para página anterior."/>
+           <center>
+                        <button type="submit" onClick="history.go(-1)" class="btn btn-default" aria-label="Left Align">
+                            <i class="fa fa-reply fa-fw"></i> <span class="network-name">Voltar para página anterior.</span>
+                        </button>
+                    </center>
+    
           <?php
             }
                ?>

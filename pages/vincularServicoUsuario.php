@@ -1,13 +1,16 @@
 <?php
 include_once '../entity/Usuario.class.php';
 include_once '../dao/Servico.dao.php';
-
+include_once '../dao/Usuario.dao.php';
 if(!isset($_SESSION)) 
     { 
         session_start(); 
     } 
 $usuario = $_SESSION['usuario'];
+$idUsuario = $usuario->getIdUsuario();
 $servicoDAO = new ServicoDAO();
+$usuarioDAO = new UsuarioDAO();
+$verificacaoUsuarioProfissional = $usuarioDAO->getUsuarioProfissional($idUsuario);
 $categoriasServico = $servicoDAO->getCategoriasServico();
 include '../resources/layoutInterno.php';
 
@@ -31,6 +34,7 @@ include '../resources/layoutInterno.php';
                         <h3>Vincular novo serviço à conta</h3>
                         
                         <hr class="intro-divider">
+                        <?php if($verificacaoUsuarioProfissional['id_profissional'] > 0){ ?>
                         <p align="justify"> Abaixo você pode vincular um novo serviço a sua conta, preencha abaixo todas as informações acerca do serviço prestado, ao salvar este serviço já ficará disponível para os usuários do sistema.</p>  <br>
                         <form id="novoServico" enctype="multipart/form-data" action="/casaLimpa/action/vincularServicoUsuario.action.php" method="POST">
                                   <div class="form-group">
@@ -78,7 +82,9 @@ include '../resources/layoutInterno.php';
                                 </center>
                             
                             </form>                
-                          
+                        <?php } else {
+                            echo 'Você não possui perfil para cadastrar serviços, acesse a aba superior "Meu Perfil" e faça seu cadastro como Prestador de Serviços.';
+                        } ?>
                           
 </div>
                       

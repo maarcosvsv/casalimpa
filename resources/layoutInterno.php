@@ -14,11 +14,22 @@ if(!isset($_SESSION))
     <meta name="description" content="">
     <meta name="author" content="">	
 
-      <script language="JavaScript" type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script> 
+      <script language="JavaScript" type="text/javascript" src="../resources/js/JQUERY8.js"></script> 
  	<script language="JavaScript" type="text/javascript" src="../resources/js/jquery.js"></script>
    <script language="JavaScript" type="text/javascript" src="../resources/js/script.js"></script>
  	<script language="JavaScript" type='text/javascript' src='../ajax/cep.ajax.js'></script>
- 
+   <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+   
+        <!--datepicker -->
+    <script src="../resources/js/bootstrap-datepicker.js"></script>
+    <script src="../resources/locales/bootstrap-datepicker.pt-BR.min.js"></script>
+    <!-- Datepicker -->
+    <link href="../resources/css/bootstrap-datepicker.css" rel="stylesheet">
+
+     <!-- Bootstrap Core JavaScript -->
+    <script src="../resources/js/bootstrap.min.js"></script>
+    
 	<meta charset="utf-8">
         <title>CasaLimpa</title>
 	<!-- Bootstrap Core CSS -->
@@ -31,7 +42,7 @@ if(!isset($_SESSION))
     <link href="/casaLimpa/resources/js/bootstrap.js">-->
 
     <!-- Custom CSS -->
-    <link href="/casaLimpa/resources/ss/landing-page.css" rel="stylesheet">
+  
     <link href="/casaLimpa/resources/css/estilo_listaserv.css" rel="stylesheet">
     
     
@@ -51,8 +62,8 @@ if(!isset($_SESSION))
     
     <!-- Custom Fonts -->
     <link href="/casaLimpa/resources/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
-
+<!--    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+-->
     <link rel="stylesheet" type="text/css" href="/casaLimpa/resources/css/estilo.css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->

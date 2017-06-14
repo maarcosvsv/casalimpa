@@ -71,37 +71,36 @@ $servicos = $servicoDAO->getServicosPorFiltro($idCidade, $idBairro, $idCategoria
    $num= sizeof($servicos);
         if($servicos != NULL)
         {
-        echo ' <table class="table" border="2" style="width: 100%" >';
-        echo "<tr><td>FOTO</td><td>Prazo Médio</td><td>Preço Sugerido</td>"
-        . "<td>Categoria</td><td>Profissional</td><td>Cidade</td><td>Bairro</td></tr>";
+         echo ' <table class="table" border="0" style="width: 100%" >';
         foreach($servicos as $servico)
         {
        
         echo "<tr>";
         if($servico['imagemPrincipal'] != null){
-         echo '<td><img height="100" width="100" src="data:image/jpeg;base64,' .  base64_encode($servico['imagemPrincipal']). '" /></td>';
+         echo '<td width="10%"><img height="200" width="200" src="data:image/jpeg;base64,' .  base64_encode($servico['imagemPrincipal']). '" /></td>';
            
         }else{
-             echo '<td><img height="100" width="100" src="/casaLimpa/resources/img/interno/nophoto.png" /></td>';
+             echo '<td width="10%"><img height="200" width="200" src="/casaLimpa/resources/img/interno/nophoto.png" /></td>';
         
            
         }
        
                 
+          echo"<td><b>Categoria: </b>R$ ".$servico['nomeServico']."<br>";
+        echo" <b>Preço solicitado: </b> ".$servico['precoServico']."<br>";
+        echo"<b>Prazo médio para realização:</b> ".$servico['prazoServico']."<br>";
+        echo "<b>Categoria: </b>".$servico['nome']."<br>";
+        echo"<b>Cidade Principal: </b>".$servico['nomeCidade']." - ".$servico['nomeBairro']." <br>";
         
-        echo"<td>".$servico['prazoServico']."</td>";
-        echo"<td>R$ ".$servico['precoServico']."</td>";
-        echo"<td>".$servico['nomeServico']."</td>";
-        echo"<td>".$servico['nome']."</td>";
-        echo"<td>".$servico['nomeCidade']."</td>";
-        echo"<td>".$servico['nomeBairro']."</td>";
-        echo '<td>
+       
+       
+        echo '<br>
             <a href="contratarServico.php?codServico='.$servico['codigoServico'].'" >
-  <center>
+ 
   <button type="button" class="btn btn-default" aria-label="Left Align">
-  <i class="fa fa-usd fa-fw"></i> <span class="network-name">Contratar</span>
+  <i class="fa fa-usd fa-fw"></i> <span class="network-name">Solicitar este serviço</span>
 </button>
-  </center></a></td>';
+  </a>';
         echo"</tr>";
         }//for
         echo"</table>";

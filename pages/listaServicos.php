@@ -34,44 +34,49 @@ include '../resources/layoutInterno.php';
                             <center>
                                 <a href="vincularServicoUsuario.php"
                             <button style="float: left;" type="button"  class="btn btn-default" aria-label="Left Align">
-  <i class="fa fa-plus-square fa-fw"></i>Adicionar novo serviço
+  <i class="fa fa-plus-square fa-fw"></i>Adicionar um novo serviço
                                     </button></a>
                                 </center>
-                            <table class="table table-inverse">
-     <thead>
-      <tr>
-        <th>Serviço</th>
-        <th>Prazo Médio</th>
-        <th>Valor Cobrado</th>
-        <th>Prestador</th>
-        <th>Reg. Salarial</th>
-        <th>Ações</th>
-       
-      </tr>
-    </thead>
-      <tbody>
+                            <br> <br> <br>
         <?php
-        
-	foreach ($servicos as $servico){
-            echo " <tr><th>".$servico['nomeServico']."</th>";
-            echo "<th>".$servico['prazoServico']."</th>";
-            echo "<th>".$servico['precoServico']."</th>";
-            echo "<th>".$servico['nome']."</th>";
-            echo "<th>".$servico['registro_salarial']."</th>";
-           echo '<th><img src="data:image/jpeg;base64,' .  base64_encode($servico['imagemPrincipal']). '" /></th>';
-               echo '<th><button type="submit" name="'.$servico['codigoServico'].'" class="btn btn-default" aria-label="Left Align">
-  <i class="glyphicon glyphicon-eye-open"></i>
-</button><button type="submit" name="'.$servico['codigoServico'].'" onClick="identifica(this);" class="btn btn-default" aria-label="Left Align">
-  <i class="glyphicon glyphicon-remove"></i>
-</button><button type="submit" name="'.$servico['codigoServico'].'" onClick="identifica(this);" class="btn btn-default" aria-label="Left Align">
-  <i class="fa fa-sign-in fa-fw"></i>
-</button></th>  </tr>';      
-        }                
-        
-        ?>   
+        if($servicos != null){
            
-    </tbody>    
-  </table>
+        
+         echo ' <table class="table" border="0" style="width: 100%" >';
+        foreach($servicos as $servico)
+        {
+       
+        echo "<tr>";
+        if($servico['imagemPrincipal'] != null){
+         echo '<td width="10%"><img height="200" width="200" src="data:image/jpeg;base64,' .  base64_encode($servico['imagemPrincipal']). '" /></td>';
+           
+        }else{
+             echo '<td width="10%"><img height="200" width="200" src="/casaLimpa/resources/img/interno/nophoto.png" /></td>';
+        
+           
+        }
+       
+                
+        echo"<td><b>Categoria:</b> ".$servico['nomeServico']."<br>" ;
+        echo" <b>Prazo médio para atendimento: </b> ".$servico['prazoServico']."<br>";
+        echo"<b>Preço Sugerido: </b>R$ ".$servico['precoServico']."<br>";
+        echo"<b>Prestador: </b>".$servico['nome']."<br>";
+        echo"<b>Registro Salarial Informado: </b>".$servico['registro_salarial']."<br>";
+        echo '<br>
+            <a href="/casaLimpa/action/desabilitarServico.action.php?id='.$servico["codigoServico"].'&acao=2" >
+  
+  <button type="button" class="btn btn-default" aria-label="Left Align">
+  <i class="fa fa-low-vision fa-fw"></i> <span class="network-name">Desabilitar serviço</span>
+</button>
+  </a>';
+              
+        }                                
+       
+        }else{
+            echo 'Você ainda não possui nenhum serviço vinculado ao seu perfil, adicione serviços ao seu perfil e comece sua divulgação!';
+        }
+        ?>            
+     
 </div>
                       
                     </div>
@@ -81,22 +86,13 @@ include '../resources/layoutInterno.php';
         </div>
         <!-- /.container -->
 
-        <div class="container view">
-            <div class="row">
-                <div class="col-md-12 ">
-                    
-                                                          
-                </div>
-            </div>
-        </div>
-        
+     
     </div>
     <!-- /.intro-header -->
 
    
         </div></div>
 
-<script src="..\resources\js\visualizar.js"></script>
 
 </body>
 

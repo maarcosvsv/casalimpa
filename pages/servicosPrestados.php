@@ -94,7 +94,7 @@ $servicos = $servicoDAO->getServicosPrestadosPorUsuario($idUsuario,$startrow);
         }//for
         echo"</table>";
         }else{
-            echo 'Nenhum serviço encontrado nessa busca. <a href="buscarServicos.php">Tente novamente clicando aqui.</a>';
+            echo 'Você ainda não possui nenhuma ordem serviço vinculada ao seu perfil.';
         }
         
         

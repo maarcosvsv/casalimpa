@@ -63,14 +63,9 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
+                    
                     <li>
-                        <a href="#about">Sobre</a>
-                    </li>
-                    <li>
-                        <a href="#services">Como funciona</a>
-                    </li>
-                    <li>
-                        <a href="pages/cadastro">Cadastre-se</a>
+                        <a href="pages/cadastroUsuario.php">Cadastre-se</a>
                     </li>
                     <li>
                         <a href="pages/login.php">Login</a>
@@ -93,7 +88,7 @@
                     <div class="intro-message">
                         <h1>Casa Limpa</h1>
                         <hr class="intro-divider">
-                        <h3>Contrate um profissional</h3>
+                        <h3>Sua casa em boas mãos</h3>
                         
                         
                         
@@ -118,17 +113,14 @@
                         <li>
                             <a href="#">Início</a>
                         </li>
+                        
                         <li class="footer-menu-divider">&sdot;</li>
                         <li>
-                            <a href="#about">Sobre</a>
+                             <a href="pages/cadastroUsuario.php">Cadastre-se</a>
                         </li>
                         <li class="footer-menu-divider">&sdot;</li>
                         <li>
-                            <a href="#services">Como Funciona</a>
-                        </li>
-                        <li class="footer-menu-divider">&sdot;</li>
-                        <li>
-                            <a href="#contact">Login</a>
+                            <a href="pages/login.php">Login</a>
                         </li>
                     </ul>
                     <p class="copyright text-muted small">Copyright &copy; CasaLimpa Empreendimentos LTDA 2017. Todos os direitos reservados.</p>
@@ -136,7 +128,8 @@
             </div>
         </div>
     </footer>
-
+ <li>
+                        
     <!-- jQuery -->
     <script src="resources/js/jquery.js"></script>
 

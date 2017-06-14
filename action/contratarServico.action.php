@@ -16,17 +16,19 @@ if(!isset($_SESSION))
  $dataFim = $_POST['dataFim'];
  $turnoPreferencia =  $_POST['turnoPreferencia'];
  $idLogradouro = $_POST['idLogradouro'];
+  $complemento = $_POST['complemento'];
 
  $horario = $_POST['horario'];
  $numeroOS = $idUsuario.date('dmyHis');
 
- $dataInicioSQL = date('Y-m-d', strtotime($dataInicio));
-$dataFimSQL = date('Y-m-d', strtotime($dataFim));
+ $dataInicioSQL = join('-',array_reverse(explode('/',$dataInicio)));
+ $dataFimSQL = join('-',array_reverse(explode('/',$dataFim)));
+ 
  
 $servicoDAO = new ServicoDAO();
-       $resultado = $servicoDAO->contratarServico($idUsuario, $codServico, $dataInicioSQL, $dataFimSQL, $turnoPreferencia, $idLogradouro, $horario, $numeroOS) ;  
+       $resultado = $servicoDAO->contratarServico($idUsuario, $codServico, $dataInicioSQL, $dataFimSQL, $turnoPreferencia, $idLogradouro, $horario, $numeroOS,$complemento) ;  
        if( $resultado  == true ){
-      header("Location: /casaLimpa/pages/listaServicos.php");
+      header("Location: /casaLimpa/pages/msg/sucessoContatarServico.php");
         }else{
          echo 'erro';
           

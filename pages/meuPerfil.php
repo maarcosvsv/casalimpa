@@ -17,7 +17,7 @@ if (isset($_GET['ed'])) {
         <div class="container">
 
             <div class="row">
-                <div class="col-lg-10">
+                <div class="col-lg-12">
                     <div class="intro-message">
         <br>
         <h3>Meu Perfil - Informações globais</h3>
@@ -25,7 +25,7 @@ if (isset($_GET['ed'])) {
         <ul class="nav nav-tabs">
             <li class="active"><a href="#">Perfil principal</a></li>
             <li><a href="meuPerfil_prestador.php">Prestador de Serviços</a></li>
-            <li><a href="meuPerfil_cliente.php">Cliente</a></li>
+            <li><a href="meuPerfil_cliente.php">Empregador</a></li>
 
         </ul>
 <?php
@@ -43,9 +43,9 @@ if ($edicao == false) {
 
     if ($usuario->getFotoPerfil() != null) {
 
-        echo '<td><img height="200" width="200" src="data:image/jpeg;base64,' . base64_encode($usuario->getFotoPerfil()) . '" /></td>';
+        echo '<td width="10%"><img height="200" width="200" src="data:image/jpeg;base64,' . base64_encode($usuario->getFotoPerfil()) . '" /></td>';
     } else {
-        echo '<td><img height="200" width="200" src="/casaLimpa/resources/img/interno/nophoto.png" /></td>';
+        echo '<td width="10%"><img height="200" width="200" src="/casaLimpa/resources/img/interno/nophoto.png" /></td>';
     }
 
 
@@ -79,9 +79,9 @@ if ($edicao == false) {
 
     if ($usuario->getFotoPerfil() != null) {
 
-        echo '<td width="30%"><img height="200" width="200" src="data:image/jpeg;base64,' . base64_encode($usuario->getFotoPerfil()) . '" /></td>';
+        echo '<td width="10%"><img height="200" width="200" src="data:image/jpeg;base64,' . base64_encode($usuario->getFotoPerfil()) . '" /></td>';
     } else {
-        echo '<td width="30%"><img height="200" width="200" src="/casaLimpa/resources/img/interno/nophoto.png" /></td>';
+        echo '<td width="10%"><img height="200" width="200" src="/casaLimpa/resources/img/interno/nophoto.png" /></td>';
     }
 
     echo '<td>'
@@ -116,16 +116,9 @@ if ($edicao == false) {
                         <label  for="cep">Endereço</label>
                         <input type="text" id="cep" name="cep" onkeypress="return MM_formtCep(event,this,'#####-###');" maxlength="9"  value="<?php echo($enderecoPrincipal->getCepLogradouro() ); ?>" class="form-control" placeholder="CEP" required ><br/>
                     </div>
-                
-                <div class="form-group">      
-                         <label  for="fotoPerfil">Imagem Principal</label><br>
-                         <b>Importante:</b> Imagens tem uma melhor aceitação dos usuários!
-                            
-   <input id="fotoPerfil" name="fotoPerfil" type="file" value="" class="form-control" /> 
-                     </div>
                  
                     <div class="form-group" >
-                        <label  for="enderecoCompleto">Endereço selecionado: </label>
+                        <label  for="enderecoCompleto">Novo endereço: </label>
                         <input type="text" id="enderecoCompleto" name="enderecoCompleto" class="form-control" placeholder="Endereço" disabled="true"/><br/>
                       </div> 
                 
@@ -134,7 +127,12 @@ if ($edicao == false) {
                     <input type="text" id="complemento" name="complemento" value="<?php echo($usuario->getComplementoEndereco()); ?>" class="form-control" placeholder="Documento de identificação" aria-describedby="basic-addon1" required>
                 </div>
                 <input style="display:none;" type="text" id="idLogradouro" name="idLogradouro" value="<?php echo($usuario->getLogradouro()); ?>"/>
-
+  <div class="form-group">      
+                         <label  for="fotoPerfil">Foto de Perfil</label><br>
+                         <b>Importante:</b> Imagens tem uma melhor aceitação dos usuários!
+                            
+   <input id="fotoPerfil" name="fotoPerfil" type="file" value="" class="form-control" /> 
+                     </div>
                 <br>
                     <center>
                         <button type="submit" class="btn btn-default" aria-label="Left Align">
