@@ -27,7 +27,7 @@ $sqlInsertServico = "INSERT INTO categoria_servico(nome,descricao,nivel_dificuld
 
 mysql_query($sqlInsertServico, $connection);
 
-echo mysql_errno($connection) . ": " . mysql_error($connection) . "\n";
+//echo mysql_errno($connection) . ": " . mysql_error($connection) . "\n";
 }
 
 function desabilitarServico($idServico) {
@@ -39,7 +39,7 @@ $query = "UPDATE servico SET ativo = 0 WHERE cod_servico = ".$idServico;
 
 mysql_query($query, $connection);
 
-echo mysql_errno($connection) . ": " . mysql_error($connection) . "\n";
+//echo mysql_errno($connection) . ": " . mysql_error($connection) . "\n";
 }
 
 function confirmarRealizacaoServico($idOS) {
@@ -50,7 +50,7 @@ $sqlInsertServico = "update ordem_servico set id_situacao_os = 2 where id_os = "
 
 
 mysql_query($sqlInsertServico, $connection);
-echo mysql_errno($connection) . ": " . mysql_error($connection) . "\n";
+//echo mysql_errno($connection) . ": " . mysql_error($connection) . "\n";
 }
 
 function confirmarRealizacaoAntecipada($idOS) {
@@ -61,7 +61,7 @@ $sqlInsertServico = "update ordem_servico set id_situacao_os = 3 where id_os = "
 
 
 mysql_query($sqlInsertServico, $connection);
-echo mysql_errno($connection) . ": " . mysql_error($connection) . "\n";
+//echo mysql_errno($connection) . ": " . mysql_error($connection) . "\n";
 }
 
 function recusarServico($idOS) {
@@ -72,7 +72,7 @@ $sqlInsertServico = "update ordem_servico set id_situacao_os = 6 where id_os = "
 
 
 mysql_query($sqlInsertServico, $connection);
-echo mysql_errno($connection) . ": " . mysql_error($connection) . "\n";
+//echo mysql_errno($connection) . ": " . mysql_error($connection) . "\n";
 }
 function avaliarCliente($idOS, $mediaSatisfatoria, $consideracoes) {
 $servicoDAO = new ServicoDAO();
@@ -95,7 +95,7 @@ $sqlInsertAvaliacao = "insert into qualificacao_cliente (media_satisfatoria, con
 . "values ('".$mediaSatisfatoria."','".$consideracoes."',".$servico['id_cliente'].",".$servico['numero_os'].")";
 mysql_query($sqlInsertAvaliacao, $connection);
 }
-echo mysql_errno($connection) . ": " . mysql_error($connection) . "\n";
+//echo mysql_errno($connection) . ": " . mysql_error($connection) . "\n";
 }
 
 function avaliarProfissional($idOS, $mediaSatisfatoria, $consideracoes, $avaliacao) {
@@ -145,7 +145,7 @@ $sqlUpdateQualificacao = "update qualificacao_profissional set total_reclamacoes
 mysql_query($sqlUpdateQualificacao, $connection);
 
 }
-echo mysql_errno($connection) . ": " . mysql_error($connection) . "\n";
+//echo mysql_errno($connection) . ": " . mysql_error($connection) . "\n";
 }
 
 
@@ -159,7 +159,7 @@ $sqlServico = "select serv.cod_servico as codigoServico, serv.prazo as prazoServ
  and p.id_usuario = " . $idUsuario . "  
  and serv.ativo = 1";
 $result = mysql_query($sqlServico, $connection);
-echo mysql_errno($connection) . ": " . mysql_error($connection) . "\n";
+//echo mysql_errno($connection) . ": " . mysql_error($connection) . "\n";
 
 
 $servicos[] = null;
@@ -362,7 +362,7 @@ and cidade.PK_Cidade = bairro.TB_Cidade_PK_Cidade
 
 
 $result = mysql_query($sqlServico, $connection);
-echo mysql_errno($connection) . ": " . mysql_error($connection) . "\n";
+//echo mysql_errno($connection) . ": " . mysql_error($connection) . "\n";
 
 
 $servicos[] = null;
@@ -385,7 +385,7 @@ $connectionFactory = new connectionFactory();
 $connection = $connectionFactory->getConnection();
 $sqlServico = "select * from categoria_servico order by nome";
 $result = mysql_query($sqlServico, $connection);
-echo mysql_errno($connection) . ": " . mysql_error($connection) . "\n";
+//echo mysql_errno($connection) . ": " . mysql_error($connection) . "\n";
 
 
 $servicos[] = null;
@@ -426,7 +426,38 @@ $sqlServico = "insert into servico (prazo, observacoes, preco_sugerido, categori
 . " values ('" . $prazoServico . "','" . $observacoes . "','" . $preco . "'," . $idCategoriaServico . " ," . $idProfissional . " , 1, '" . $conteudo . "') ";
 
 mysql_query($sqlServico, $connection);
-echo mysql_errno($connection) . ": " . mysql_error($connection) . "\n";
+//echo mysql_errno($connection) . ": " . mysql_error($connection) . "\n";
+
+$error = mysql_errno($connection);
+mysql_close($connection);
+if ($error == "0") {
+return TRUE;
+} else {
+return FALSE;
+}
+} else {
+return false;
+}
+}
+
+function vincularServicoUsuarioComBase($idCategoriaServico, $prazoServico, $preco, $observacoes, $idUsuario, $imagemServico) {
+
+$connectionFactory = new connectionFactory();
+$connection = $connectionFactory->getConnection();
+
+$sqlServico = "select id_profissional from profissional where id_usuario = " . $idUsuario;
+$resultProfissional = mysql_query($sqlServico, $connection);
+
+while ($rowProf = mysql_fetch_assoc($resultProfissional)) {
+$idProfissional = $rowProf['id_profissional'];
+}
+
+if ($idProfissional != null && $idProfissional != "") {
+$sqlServico = "insert into servico (prazo, observacoes, preco_sugerido, categoria_servico_cod_categoria_servico, id_profissional, ativo, imagem_principal) "
+. " values ('" . $prazoServico . "','" . $observacoes . "','" . $preco . "'," . $idCategoriaServico . " ," . $idProfissional . " , 1, '" . $imagemServico . "') ";
+
+mysql_query($sqlServico, $connection);
+//echo mysql_errno($connection) . ": " . mysql_error($connection) . "\n";
 
 $error = mysql_errno($connection);
 mysql_close($connection);
@@ -482,7 +513,7 @@ id_logradouro) VALUES (" . $numeroOS . ",'" . $dataInicio . "','" . $dataFim . "
 . "'" . $idLogradouro . "')";
 
 mysql_query($sqlServico, $connection);
-echo mysql_errno($connection) . ": " . mysql_error($connection) . "\n";
+//echo mysql_errno($connection) . ": " . mysql_error($connection) . "\n";
 
 $error = mysql_errno($connection);
 mysql_close($connection);
@@ -558,7 +589,7 @@ $arrayCounts['CPROFAguardandoRealizacao'] = $contador;
 
 //-- AGUARDANDO AVALIACAO CLIENTE
 $sql = "select count(os.id_os) as contador from ordem_servico os inner join profissional p on p.id_profissional = os.id_profissional
-where os.id_situacao_os in (3, 5)
+where os.id_situacao_os in (3, 4)
 and p.id_usuario = ".$idUsuarioLogado;
 
 $result = mysql_query($sql, $connection);
@@ -572,7 +603,7 @@ $arrayCounts['CCLIAguardandoAvaliacao'] = $contador;
 
 //-AGUARDANDO AVALIAÇÃO PRESTADOR
 $sql = "select count(os.id_os) as contador from ordem_servico os inner join cliente c on c.id_cliente = os.id_cliente
-where os.id_situacao_os in (3, 4)
+where os.id_situacao_os in (3, 5)
 and c.id_usuario = ".$idUsuarioLogado;
 
 $resultContAvaliacao = mysql_query($sql, $connection);

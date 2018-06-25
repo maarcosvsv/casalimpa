@@ -42,7 +42,7 @@ class EmpregadoDAO {
 
          mysql_query($sqlInsertUsuario, $connection); 
                
-      echo mysql_errno($connection) . ": " . mysql_error($connection) . "\n";
+      //echo mysql_errno($connection) . ": " . mysql_error($connection) . "\n";
          $idUsuario = mysql_insert_id();
        
          $errorUsuario = mysql_errno($connection);
@@ -52,7 +52,15 @@ class EmpregadoDAO {
                  . "".$idUsuario.") ";
            
         mysql_query($sqlInsertEmpregado, $connection); 
-         echo mysql_errno($connection) . ": " . mysql_error($connection) . "\n";
+        
+        $idProfissional = mysql_insert_id();
+        
+         $sqlInsertEmpregado = "INSERT INTO qualificacao_profissional(id_profissional, total_reclamacoes, total_satisfeitos, media_atendimento) "
+                 . "values (".$idProfissional.",0,0,0) ";
+           
+        mysql_query($sqlInsertEmpregado, $connection); 
+        
+        //echo mysql_errno($connection) . ": " . mysql_error($connection) . "\n";
          
         
         $errorProfissional = mysql_errno($connection);
@@ -89,7 +97,7 @@ class EmpregadoDAO {
 
          mysql_query($sqlInsertUsuario, $connection); 
                
-      echo mysql_errno($connection) . ": " . mysql_error($connection) . "\n";
+      //echo mysql_errno($connection) . ": " . mysql_error($connection) . "\n";
          $idUsuario = mysql_insert_id();
        
          $errorUsuario = mysql_errno($connection);
@@ -98,7 +106,7 @@ class EmpregadoDAO {
                  . "values ('".$nome."','".$telefoneCompleto."','".$dataNascimento."',".$idUsuario.")";  
            
         mysql_query($sqlInsertEmpregado, $connection); 
-         echo mysql_errno($connection) . ": " . mysql_error($connection) . "\n";
+        // echo mysql_errno($connection) . ": " . mysql_error($connection) . "\n";
          
         
         $errorCliente = mysql_errno($connection);

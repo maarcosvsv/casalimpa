@@ -79,7 +79,7 @@ function atualizarPerfilGlobalUsuario($idUsuario, $login, $senha, $email, $fotoP
      
         mysql_query($sqlUpdate, $connection);
 
-      echo mysql_errno($connection) . ": " . mysql_error($connection) . "\n";
+      //echo mysql_errno($connection) . ": " . mysql_error($connection) . "\n";
          
         $error = mysql_errno($connection);
         mysql_close($connection);
@@ -182,7 +182,7 @@ function getUsuarioProfissional($idUsuario) {
         $connection = $connectionFactory->getConnection();
        
          $sqlProf = "select * from profissional where id_usuario = ".$idUsuario;
-         echo mysql_errno($connection) . ": " . mysql_error($connection) . "\n";
+         //echo mysql_errno($connection) . ": " . mysql_error($connection) . "\n";
          $res = mysql_query($sqlProf, $connection);	
          $arrayProfissional = array();
          

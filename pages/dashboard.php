@@ -69,7 +69,7 @@ $contadores = $servicoDAO->getContadoresHome($idUsuario);
                                   <?php } ?>
                                    <?php if($contadores['CPROFAguardandoAvaliacao'] != 0){ ?>
                                 <a href="#" class="list-group-item">
-                                    <i class="fa fa-thumbs-o-up fa-fw"></i> <?php echo($contadores['CPROFAguardandoAvaliacao']); ?> Serviços aguardando sua Avaliação.  
+                                    <i class="fa fa-thumbs-o-up fa-fw"></i> <?php echo($contadores['CPROFAguardandoAvaliacao']); ?> erviços aguardando sua realização.
                                     <span class="pull-right text-muted small"><em>Prestador de Serviços</em>
                                     </span>
                                 </a>

@@ -86,10 +86,10 @@ $servicos = $servicoDAO->getServicosPorFiltro($idCidade, $idBairro, $idCategoria
         }
        
                 
-          echo"<td><b>Categoria: </b>R$ ".$servico['nomeServico']."<br>";
-        echo" <b>Preço solicitado: </b> ".$servico['precoServico']."<br>";
+          echo"<td><b>Categoria: </b> ".$servico['nomeServico']."<br>";
+        echo" <b>Preço solicitado: </b> R$ ".$servico['precoServico']."<br>";
         echo"<b>Prazo médio para realização:</b> ".$servico['prazoServico']."<br>";
-        echo "<b>Categoria: </b>".$servico['nome']."<br>";
+        echo "<b>Prestador: </b>".$servico['nome']."<br>";
         echo"<b>Cidade Principal: </b>".$servico['nomeCidade']." - ".$servico['nomeBairro']." <br>";
         
        
