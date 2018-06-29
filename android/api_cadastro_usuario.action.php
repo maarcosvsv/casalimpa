@@ -31,14 +31,17 @@
         $usuario = new Usuario(null, $login, $senha, $email, $dataExpiracao, 1, $complementoEndereco, $logradouro, null, $docIdentificacao);
         $empregado = new Empregado(null, $usuario, $nome, $telefoneCompleto, null, null);
         $error = false;
-        if($tipoUsuario == "EMPREGADO"){
+        
+		/*if($tipoUsuario == "EMPREGADO"){
         $empregadoDAO = new EmpregadoDAO();
         $error = $empregadoDAO->incluirEmpregado($empregado);
         }else {
             $empregadoDAO = new EmpregadoDAO();
           $error = $empregadoDAO->incluirEmpregador($usuario, $nome, $telefoneCompleto, $dataNascimentoSQL);
 		  
-        }
+        }*/
+		$empregadoDAO = new EmpregadoDAO();
+		 $error = $empregadoDAO->salvarEmpregadoEmpregador($empregado, $nome, $telefoneCompleto, $dataNascimentoSQL);
 		
 		$resultdb = "false";
 		

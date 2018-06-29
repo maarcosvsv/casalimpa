@@ -262,7 +262,9 @@ and cidade.PK_Cidade = bairro.TB_Cidade_PK_Cidade
  and p.id_profissional = serv.id_profissional
 and (usuarioProfissional.id_usuario = " . $idUsuario . " or usuarioCliente.id_usuario = " . $idUsuario . ")";
 
+if($startrow != null){
 $sqlServico = $sqlServico . " LIMIT " . $startrow . ", 5";
+}
 
 $result = mysql_query($sqlServico, $connection);
 
@@ -316,7 +318,10 @@ $sqlServico = $sqlServico . " and bairro.PK_Bairro =  " . $idBairro;
 if ($idCategoriaServico != null && $idCategoriaServico > 0) {
 $sqlServico = $sqlServico . " and catServ.cod_categoria_servico =  " . $idCategoriaServico;
 }
+
+if($startrow != null && $startrow > 0){
 $sqlServico = $sqlServico . " LIMIT " . $startrow . ", 5";
+}
 
 $result = mysql_query($sqlServico, $connection);
 
@@ -369,6 +374,45 @@ $servicos[] = null;
 $count = 0;
 while ($row = mysql_fetch_assoc($result)) {
 $servicos[$count] = $row;
+$count++;
+}
+$error = mysql_errno($connection);
+mysql_close($connection);
+if ($error == "0") {
+return $servicos;
+} else {
+return NULL;
+}
+}
+
+function getServicoPorCodigSemArray($codServico) {
+$connectionFactory = new connectionFactory();
+$connection = $connectionFactory->getConnection();
+$sqlServico = "select serv.cod_servico as codigoServico, serv.prazo as prazoServico, 
+            serv.preco_sugerido as precoServico, catServ.nome as nomeServico, p.nome, 
+            p.registro_salarial, serv.imagem_principal imagemPrincipal, bairro.Nome_Bairro as nomeBairro, 
+            serv.observacoes as observacoesServico,
+        cidade.Nome_Cidade as nomeCidade
+
+from servico serv, profissional p, categoria_servico catServ, tb_logradouro logradouro, tb_bairro bairro , tb_cidade cidade, usuario u
+where catServ.cod_categoria_servico = serv.categoria_servico_cod_categoria_servico
+and p.id_usuario = u.id_usuario
+and logradouro.PK_Logradouro = u.tb_logradouro_PK_Logradouro
+and logradouro.TB_Bairro_PK_Bairro = bairro.PK_Bairro
+and cidade.PK_Cidade = bairro.TB_Cidade_PK_Cidade
+ and p.id_profissional = serv.id_profissional
+ and serv.ativo = 1 
+ and serv.cod_servico = " . $codServico;
+
+
+$result = mysql_query($sqlServico, $connection);
+//echo mysql_errno($connection) . ": " . mysql_error($connection) . "\n";
+
+
+$servicos = null;
+$count = 0;
+while ($row = mysql_fetch_assoc($result)) {
+$servicos = $row;
 $count++;
 }
 $error = mysql_errno($connection);

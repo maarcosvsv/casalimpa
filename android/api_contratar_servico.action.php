@@ -1,22 +1,14 @@
 <?php
 include_once '../entity/Usuario.class.php';
   require_once '../dao/Servico.dao.php';
-if(!isset($_SESSION)) 
-    { 
-        session_start(); 
-    } 
     
-    
- $usuario = $_SESSION['usuario'];
- $idUsuario = $usuario->getIdUsuario();
- 
+ $idUsuario = $_POST['idUsuario'];
  $codServico = $_POST['codServico'];
- 
  $dataInicio = $_POST['dataInicio'];
  $dataFim = $_POST['dataFim'];
  $turnoPreferencia =  $_POST['turnoPreferencia'];
  $idLogradouro = $_POST['idLogradouro'];
-  $complemento = $_POST['complemento'];
+ $complemento = $_POST['complemento'];
 
  $horario = $_POST['horario'];
  $numeroOS = $idUsuario.date('dmyHis');
@@ -27,12 +19,17 @@ if(!isset($_SESSION))
  
 $servicoDAO = new ServicoDAO();
        $resultado = $servicoDAO->contratarServico($idUsuario, $codServico, $dataInicioSQL, $dataFimSQL, $turnoPreferencia, $idLogradouro, $horario, $numeroOS,$complemento) ;  
-       if( $resultado  == true ){
-      header("Location: /casaLimpa/pages/msg/sucessoContatarServico.php");
-        }else{
-         echo 'erro';
-          
-        }
+	   
+	   $resultdb = "false";
+		
+        if($resultado == true){
+		$resultdb = "true";
+		}
+		$result['result'] = $resultdb;
+		
+		 
+		 echo json_encode($result, JSON_UNESCAPED_UNICODE );
+
 
       
         

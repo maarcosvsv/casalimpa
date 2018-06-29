@@ -43,7 +43,25 @@ if($verificacaoUsuarioProfissional['id_profissional'] > 0 && $option == 'CATEGOR
 	
 	echo json_encode($result, JSON_UNESCAPED_UNICODE);
 	
-}else if($verificacaoUsuarioProfissional['id_profissional'] > 0 && $option == 'SALVAR_SERVICO'){
+} else if($option == 'GET_SERVICOS_USUARIO_REALIZADOS'){
+	$servicos = $servicoDAO->getServicosPrestadosPorUsuario($idUsuario, NULL);
+
+	for($i = 0; $i < sizeof($servicos); $i++){
+		$imagemServico = $servicos[$i]['imagemPrincipal'];
+		$servicos[$i]['imagemPrincipal'] = chunk_split(base64_encode($imagemServico));
+	}
+	
+	if($servicos != null){
+	$result['result'] = "true";
+	$result['servicos'] = json_encode($servicos); 
+	
+	} else {
+	$result['result'] = "false";
+	}
+	
+	echo json_encode($result, JSON_UNESCAPED_UNICODE);
+	
+} else if($verificacaoUsuarioProfissional['id_profissional'] > 0 && $option == 'SALVAR_SERVICO'){
 	
 	if(isset($_POST['imagemServico'])){
 		 $imagemServico = $_POST['imagemServico'];
